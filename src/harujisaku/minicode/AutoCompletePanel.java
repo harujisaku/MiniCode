@@ -2,19 +2,20 @@ package harujisaku.minicode;
 
 import java.awt.Color;
 import java.awt.Point;
-import javax.swing.JPopupMenu;
-import javax.swing.JList;
-import javax.swing.JEditorPane;
 import java.awt.BorderLayout;
-import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
-import javax.swing.text.BadLocationException;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
+import javax.swing.JList;
+import javax.swing.SwingUtilities;
+import javax.swing.ListSelectionModel;
+import javax.swing.JEditorPane;
+import javax.swing.JPopupMenu;
 import javax.swing.BorderFactory;
 import javax.swing.text.Utilities;
+import javax.swing.text.BadLocationException;
 
 public class AutoCompletePanel{
 	public SuggestString suggest = new SuggestString();
@@ -35,7 +36,6 @@ public class AutoCompletePanel{
 		list = createSuggestionList(position, subWord);
 		if (list!=null) {
 			popupMenu.add(list, BorderLayout.CENTER);
-			System.out.println(count);
 			popupMenu.show(editorPane, location.x, editorPane.getBaseline(0, 0) + location.y+location.y/(count==0?1:count));
 		}
 	}
@@ -69,7 +69,7 @@ public class AutoCompletePanel{
 		if (list.getSelectedValue() != null) {
 			try {
 				final String selectedSuggestion = ((String) list.getSelectedValue()).substring(subWord.length());
-				editorPane.getDocument().insertString(insertionPosition, selectedSuggestion+" ", null);
+				editorPane.getDocument().insertString(insertionPosition, selectedSuggestion, null);
 				return true;
 			} catch (BadLocationException e1) {
 				e1.printStackTrace();

@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class SuggestString{
- 	final private String[] defaultWords = {"abstract ","break","catch","class","case","default","do","else","final","for","finally","if","import","interface","print","println","private","protected","public","return","static","throw","try","void","while"};
+ 	final private String[] defaultWords = {"abstract  ","break;","catch","class ","case","default","do","else","final ","for","finally","if","import ","interface ","print","println","private ","protected ","public ","return ","static ","throw","try","void ","while"};
 	public List<String> words = new ArrayList<String>(Arrays.asList(defaultWords));
 	public String[] serche(String text){
 		List<String> result = new ArrayList<String>();
