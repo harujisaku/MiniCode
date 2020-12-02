@@ -11,21 +11,21 @@ import java.awt.event.KeyListener;
 import javax.swing.JList;
 import javax.swing.SwingUtilities;
 import javax.swing.ListSelectionModel;
-import javax.swing.JEditorPane;
+import javax.swing.JTextPane;
 import javax.swing.JPopupMenu;
 import javax.swing.BorderFactory;
 import javax.swing.text.Utilities;
 import javax.swing.text.BadLocationException;
 
-public class AutoCompletePanel{
+public class AutoCompletePanel {
 	public SuggestString suggest = new SuggestString();
 	private JList list;
-	JEditorPane editorPane;
+	JTextPane editorPane;
 	private JPopupMenu popupMenu;
 	private String subWord;
 	private final int insertionPosition;
 
-	public AutoCompletePanel(JEditorPane editorPane, int position, String subWord, Point location,int count) {
+	public AutoCompletePanel(JTextPane editorPane, int position, String subWord, Point location,int count) {
 		this.insertionPosition = position;
 		this.subWord = subWord;
 		this.editorPane = editorPane;

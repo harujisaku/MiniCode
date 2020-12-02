@@ -2,20 +2,24 @@ package harujisaku.minicode;
 
 import java.util.regex.*;
 
+import harujisaku.minicode.highlight.*;
+
 import java.awt.Point;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
-import javax.swing.JEditorPane;
+import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultEditorKit;
 
 public class MiniCode extends JFrame{
 	int position;
 	String title = "untitled";
-	JEditorPane editorPane;
+	JTextPane textPane;
+	Highlight highlight;
 	AutoCompletePanel autoComplete;
 	MiniCode(){
 		setTitle(title);
@@ -23,21 +27,22 @@ public class MiniCode extends JFrame{
 		pack();
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		editorPane = new JEditorPane();
-		editorPane.setBounds(0,0,500,500);
-		editorPane.addKeyListener(new KeyListener() {
+		textPane = new JTextPane();
+		textPane.setBounds(0,0,500,500);
+		textPane.getDocument().putProperty(DefaultEditorKit.EndOfLineStringProperty,"\n");
+		textPane.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				if (e.getKeyChar() == KeyEvent.VK_ENTER||e.getKeyChar() == KeyEvent.VK_TAB) {
 					if (autoComplete != null) {
 						if (autoComplete.insertSelection()) {
 							e.consume();
-							final int position = editorPane.getCaretPosition();
+							final int position = textPane.getCaretPosition();
 							SwingUtilities.invokeLater(new Runnable() {
 								@Override
 								public void run() {
 									try {
-										editorPane.getDocument().remove(position - 1, 1);
+										textPane.getDocument().remove(position - 1, 1);
 									} catch (BadLocationException e) {
 										e.printStackTrace();
 									}
@@ -64,11 +69,15 @@ public class MiniCode extends JFrame{
 
 			@Override
 			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==KeyEvent.VK_SPACE&&highlight!=null) {
+					highlight.highlight();
+				}
 			}
 		});
-		getContentPane().add(editorPane);
+		AbstractHighlight highlightSyle = new JavaHighlight();
+		highlight = new Highlight(highlightSyle,textPane);
+		getContentPane().add(textPane);
 		setVisible(true);
-		
 	}
 	
 	protected void showSuggestionLater(){
@@ -90,15 +99,15 @@ public class MiniCode extends JFrame{
 protected void showSuggestion() {
 	hideSuggestion();
 	
-	final int position = editorPane.getCaretPosition();
+	final int position = textPane.getCaretPosition();
 	Point location;
 	try {
-		location = editorPane.modelToView(position).getLocation();
+		location = textPane.modelToView(position).getLocation();
 	} catch (BadLocationException e2) {
 		e2.printStackTrace();
 		return;
 	}
-	String text = editorPane.getText().replaceAll("\r","");
+	String text = textPane.getText();
 	int count = 0;
 	for (int i=0,len=text.length();i<len ;i++ ) {
 		if (text.charAt(i)=='\n') {
@@ -123,11 +132,11 @@ protected void showSuggestion() {
 	if (subWord.length() < 2) {
 		return;
 	}
-	autoComplete = new AutoCompletePanel(editorPane, position, subWord, location,count);
+	autoComplete = new AutoCompletePanel(textPane, position, subWord, location,count);
 	SwingUtilities.invokeLater(new Runnable() {
 		@Override
 		public void run() {
-			editorPane.requestFocusInWindow();
+			textPane.requestFocusInWindow();
 		}
 	});
 }
@@ -145,8 +154,5 @@ protected void showSuggestion() {
 	}
 	
 	public void myMain(String[] args){
-		while(true){
-			position=editorPane.getCaretPosition();
-		}
 	}
 }
