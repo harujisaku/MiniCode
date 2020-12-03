@@ -55,10 +55,13 @@ public class Highlight{
 	}
 	
 	private String makeRegex(String[] keywords){
+		if (keywords.length<2) {
+			return keywords[0];
+		}
 		StringBuilder buff = new StringBuilder("");
 		buff.append("(");
 		for (String keyword :keywords ) {
-				buff.append("\\b").append(keyword).append("\\b").append("|");
+			buff.append("\\b").append(keyword).append("\\b").append("|");
 		}
 		buff.deleteCharAt(buff.length() - 1);
 		buff.append(")");
@@ -80,6 +83,8 @@ public class Highlight{
 		highlight(RED_KEYWORDS_REGEX,Color.RED);
 		highlight(WHITE_KEYWORDS_REGEX,Color.WHITE);
 		highlight(YELLOW_KEYWORDS_REGEX,Color.YELLOW);
+		quotation(highlight.quotation());
+		highlight(highlight.WHITE_SPACE_REGEX,Color.BLACK);
 	}
 	
 	private  void highlight(String regex,Color c){
@@ -91,6 +96,10 @@ public class Highlight{
 			AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,StyleConstants.Foreground,c);
 			editordoc.setCharacterAttributes(m.start(),m.end()-m.start(),aset,true);
 		}
+	}
+	
+	private void quotation(Color c){
+		highlight("\".*\"",c);
 	}
 	
 	public void clearTextColors(){

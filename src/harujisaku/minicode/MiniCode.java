@@ -10,17 +10,25 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import java.awt.FontMetrics;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultEditorKit;
+import javax.swing.text.TabStop;
+import javax.swing.text.TabSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.SimpleAttributeSet;
 
 public class MiniCode extends JFrame{
+	public static String WHITE_SPACE_REGEX = "[/\\\\(\\)\"':,.;<>~\\!@#$%\\^&*\\|\\+=\\[\\]\\{\\}`\\?\\-…]";
 	int position;
 	String title = "untitled";
 	JTextPane textPane;
 	Highlight highlight;
 	AutoCompletePanel autoComplete;
+	FontMetrics fm;
+	
 	MiniCode(){
 		setTitle(title);
 		getContentPane().setPreferredSize(new Dimension(500,500));
@@ -30,6 +38,15 @@ public class MiniCode extends JFrame{
 		textPane = new JTextPane();
 		textPane.setBounds(0,0,500,500);
 		textPane.getDocument().putProperty(DefaultEditorKit.EndOfLineStringProperty,"\n");
+		fm=textPane.getFontMetrics(textPane.getFont());
+		TabStop[] tabs = new TabStop[10];
+		for (int i=0,len=tabs.length;i<len ;i++ ) {
+			tabs[i] = new TabStop((i+1)*fm.charWidth(' ')*4);
+		}
+		TabSet tabSet = new TabSet(tabs);
+		SimpleAttributeSet aset=new SimpleAttributeSet();
+		StyleConstants.setTabSet(aset,tabSet);
+		textPane.getStyledDocument().setParagraphAttributes(0,textPane.getDocument().getLength(),aset,false);
 		textPane.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -69,7 +86,7 @@ public class MiniCode extends JFrame{
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode()==KeyEvent.VK_SPACE&&highlight!=null) {
+				if ((e.getKeyCode()==KeyEvent.VK_SPACE||e.getKeyCode()==KeyEvent.VK_ENTER||e.getKeyCode()==KeyEvent.VK_TAB)&&highlight!=null) {
 					highlight.highlight();
 				}
 			}
@@ -98,7 +115,7 @@ public class MiniCode extends JFrame{
 	}
 protected void showSuggestion() {
 	hideSuggestion();
-	
+	autoComplete=null;
 	final int position = textPane.getCaretPosition();
 	Point location;
 	try {

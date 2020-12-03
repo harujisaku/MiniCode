@@ -3,6 +3,7 @@ package harujisaku.minicode.highlight;
 import java.awt.Color;
 
 public abstract class AbstractHighlight {
+	public String WHITE_SPACE_REGEX = "[ /\\\\(\\)\"':,.;<>~\\!@#$%\\^&*\\|\\+=\\[\\]\\{\\}`\\?\\-…\\t]";
 	public String[] DEFAULT_KEYWORD={""};
 	public String[] BLACK_KEYWORDS={""};
 	public String[] BLUE_KEYWORDS={""};
@@ -17,4 +18,8 @@ public abstract class AbstractHighlight {
 	public String[] RED_KEYWORDS={""};
 	public String[] WHITE_KEYWORDS={""};
 	public String[] YELLOW_KEYWORDS={""};
+	
+	public Color quotation(){
+		return Color.BLACK;
+	};
 }

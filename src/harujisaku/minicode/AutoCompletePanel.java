@@ -66,15 +66,17 @@ public class AutoCompletePanel {
 	}
 
 	public boolean insertSelection() {
-		if (list.getSelectedValue() != null) {
-			try {
-				final String selectedSuggestion = ((String) list.getSelectedValue()).substring(subWord.length());
-				editorPane.getDocument().insertString(insertionPosition, selectedSuggestion, null);
-				return true;
-			} catch (BadLocationException e1) {
-				e1.printStackTrace();
+		if (list!=null) {
+			if (list.getSelectedValue() != null) {
+				try {
+					final String selectedSuggestion = ((String) list.getSelectedValue()).substring(subWord.length());
+					editorPane.getDocument().insertString(insertionPosition, selectedSuggestion, null);
+					return true;
+				} catch (BadLocationException e1) {
+					e1.printStackTrace();
+				}
+				hide();
 			}
-			hide();
 		}
 		return false;
 	}
