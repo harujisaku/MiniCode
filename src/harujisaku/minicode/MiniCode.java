@@ -89,6 +89,15 @@ public class MiniCode extends JFrame{
 				if ((e.getKeyCode()==KeyEvent.VK_SPACE||e.getKeyCode()==KeyEvent.VK_ENTER||e.getKeyCode()==KeyEvent.VK_TAB)&&highlight!=null) {
 					highlight.highlight();
 				}
+				if (e.getKeyCode()==KeyEvent.VK_ENTER&&autoComplete != null&&autoComplete.insertSelection()) {
+					e.consume();
+					String insert="";
+					for (int i=0,len=getTabSize();i<len ;i++ ) {
+						insert +="\t";
+					}
+					insert="\n"+insert;
+					textPane.replaceSelection(insert);
+				}
 			}
 		});
 		AbstractHighlight highlightSyle = new JavaHighlight();
@@ -157,6 +166,18 @@ protected void showSuggestion() {
 		}
 	});
 }
+	
+	private int getTabSize(){
+		String str = textPane.getText();
+		str = str.substring(0,textPane.getSelectionEnd())+"a";
+		String line[] = str.split("\n");
+		int i=0;
+		line[line.length-1]=line[line.length-1]+"a";
+		while(line[line.length-1].substring(i,i+1).equals("\t")){
+			i++;
+		}
+		return i;
+	}
 	
 	private void hideSuggestion(){
 		if(autoComplete != null){

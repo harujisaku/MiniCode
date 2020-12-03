@@ -7,11 +7,13 @@ public class JavaHighlight extends AbstractHighlight {
 	String[] CYAN_KEYWORDS = {WHITE_SPACE_REGEX+"+[a-z]+[a-zA-Z0-9]+\\("};
 	String[] YELLOW_KEYWORDS = {WHITE_SPACE_REGEX+"[A-Z][a-z][a-zA-Z0-9]+(?="+WHITE_SPACE_REGEX+")(?!\\()"};
 	String[] GREEN_KEYWORDS = {"\".*\""};
+	String[] ORANGE_KEYWORDS = {"[A-Z]+[A-Z_]"};
 	public JavaHighlight(){
 		super.MAGENTA_KEYWORDS=this.MAGENTA_KEYWORDS;
 		super.CYAN_KEYWORDS=this.CYAN_KEYWORDS;
 		super.YELLOW_KEYWORDS=this.YELLOW_KEYWORDS;
 		super.GREEN_KEYWORDS=this.GREEN_KEYWORDS;
+		super.ORANGE_KEYWORDS=this.ORANGE_KEYWORDS;
 	}
 	
 	@Override
