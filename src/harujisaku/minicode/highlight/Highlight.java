@@ -120,6 +120,6 @@ public class Highlight{
 		StyleContext sc = StyleContext.getDefaultStyleContext();
 		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,
 		StyleConstants.Foreground, Color.BLACK);
-		editordoc.setCharacterAttributes(start,end, aset, true);
+		editordoc.setCharacterAttributes(start,end-start, aset, true);
 	}
 }
