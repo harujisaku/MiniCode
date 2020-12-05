@@ -48,10 +48,6 @@ public class Highlight{
 			WHITE_KEYWORDS_REGEX=makeRegex(highlight.WHITE_KEYWORDS);
 			YELLOW_KEYWORDS_REGEX=makeRegex(highlight.YELLOW_KEYWORDS);
 			editordoc = editor.getStyledDocument();
-			System.out.println(highlight.MAGENTA_KEYWORDS);
-			for (String str :highlight.MAGENTA_KEYWORDS ) {
-				System.out.println(str);
-			}
 	}
 	
 	private String makeRegex(String[] keywords){
@@ -69,32 +65,39 @@ public class Highlight{
 	}
 	
 	public void highlight(){
-		clearTextColors();
-		highlight(BLACK_KEYWORDS_REGEX,Color.BLACK);
-		highlight(BLUE_KEYWORDS_REGEX,Color.BLUE);
-		highlight(CYAN_KEYWORDS_REGEX,Color.CYAN);
-		highlight(DARK_GRAY_KEYWORDS_REGEX,Color.DARK_GRAY);
-		highlight(GRAY_KEYWORDS_REGEX,Color.GRAY);
-		highlight(GREEN_KEYWORDS_REGEX,Color.GREEN);
-		highlight(LIGHT_GRAY_KEYWORDS_REGEX,Color.LIGHT_GRAY);
-		highlight(MAGENTA_KEYWORDS_REGEX,Color.MAGENTA);
-		highlight(ORANGE_KEYWORDS_REGEX,Color.ORANGE);
-		highlight(PINK_KEYWORDS_REGEX,Color.PINK);
-		highlight(RED_KEYWORDS_REGEX,Color.RED);
-		highlight(WHITE_KEYWORDS_REGEX,Color.WHITE);
-		highlight(YELLOW_KEYWORDS_REGEX,Color.YELLOW);
-		quotation(highlight.quotation());
-		highlight(highlight.WHITE_SPACE_REGEX,Color.BLACK);
+		highlight(0,editor.getText().length());
+	}
+	
+	public void highlight(int start ,int end){
+		clearTextColors(start,end);
+		highlight(start,end,BLACK_KEYWORDS_REGEX,Color.BLACK);
+		highlight(start,end,BLUE_KEYWORDS_REGEX,Color.BLUE);
+		highlight(start,end,CYAN_KEYWORDS_REGEX,Color.CYAN);
+		highlight(start,end,DARK_GRAY_KEYWORDS_REGEX,Color.DARK_GRAY);
+		highlight(start,end,GRAY_KEYWORDS_REGEX,Color.GRAY);
+		highlight(start,end,GREEN_KEYWORDS_REGEX,Color.GREEN);
+		highlight(start,end,LIGHT_GRAY_KEYWORDS_REGEX,Color.LIGHT_GRAY);
+		highlight(start,end,MAGENTA_KEYWORDS_REGEX,Color.MAGENTA);
+		highlight(start,end,ORANGE_KEYWORDS_REGEX,Color.ORANGE);
+		highlight(start,end,PINK_KEYWORDS_REGEX,Color.PINK);
+		highlight(start,end,RED_KEYWORDS_REGEX,Color.RED);
+		highlight(start,end,WHITE_KEYWORDS_REGEX,Color.WHITE);
+		highlight(start,end,YELLOW_KEYWORDS_REGEX,Color.YELLOW);
+		quotation(start,end,highlight.quotation());
+		highlight(start,end,highlight.WHITE_SPACE_REGEX,Color.BLACK);
 	}
 	
 	private  void highlight(String regex,Color c){
+		highlight(0,editor.getText().length(),regex,c);
+	}
+	
+	private void highlight(int start,int end,String regex,Color c){
 		Pattern p = Pattern.compile(regex);
-		System.out.println(p.pattern());
-		Matcher m = p.matcher(editor.getText());
+		Matcher m = p.matcher(editor.getText().substring(start,end));
 		while(m.find()){
 			StyleContext sc = StyleContext.getDefaultStyleContext();
 			AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,StyleConstants.Foreground,c);
-			editordoc.setCharacterAttributes(m.start(),m.end()-m.start(),aset,true);
+			editordoc.setCharacterAttributes(m.start()+start,m.end()-m.start(),aset,true);
 		}
 	}
 	
@@ -102,10 +105,21 @@ public class Highlight{
 		highlight("\".*\"",c);
 	}
 	
+	private void quotation(int start,int end,Color c){
+		highlight(start,end,"\".*\"",c);
+	}
+	
 	public void clearTextColors(){
 		StyleContext sc = StyleContext.getDefaultStyleContext();
 		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,
-				StyleConstants.Foreground, Color.BLACK);
+		StyleConstants.Foreground, Color.BLACK);
 		editordoc.setCharacterAttributes(0,editor.getText().length(), aset, true);
+	}
+	
+	public void clearTextColors(int start,int end){
+		StyleContext sc = StyleContext.getDefaultStyleContext();
+		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,
+		StyleConstants.Foreground, Color.BLACK);
+		editordoc.setCharacterAttributes(start,end, aset, true);
 	}
 }
