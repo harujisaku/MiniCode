@@ -92,6 +92,9 @@ public class Highlight{
 	}
 	
 	private void highlight(int start,int end,String regex,Color c){
+		if (regex.isEmpty()) {
+			return;
+		}
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(editor.getText().substring(start,end));
 		while(m.find()){
