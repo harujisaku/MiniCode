@@ -9,7 +9,7 @@ import java.util.Arrays;
 public abstract class AbstractSuggest {
 	protected String[] defaultWords = {""};
 	public String[] lastResult = {""};
-	public List<String> words;
+	protected List<String> words;
 	public AbstractSuggest(){
 		words = new LinkedList<String>(Arrays.asList(defaultWords));
 	}
@@ -31,5 +31,25 @@ public abstract class AbstractSuggest {
 			}
 		}
 		return false;
+	}
+	
+	public void addAll(List list){
+		words.addAll(list);
+	}
+	
+	public void add(String word){
+		if (!word.isEmpty()&&word!=null) {
+			words.add(word);
+		}
+	}
+	
+	public void remove(int index){
+		if (index<words.size()) {
+			words.remove(index);
+		}
+	}
+	
+	public boolean remove(String word){
+		return words.remove(word);
 	}
 }
