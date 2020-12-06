@@ -1,4 +1,4 @@
-package harujisaku.autocomplete.suggest;
+package harujisaku.minocode.autocomplete.suggest;
 
 public class AutoMakeSuggestString {
 	JTextPane textpane;
@@ -14,7 +14,7 @@ public class AutoMakeSuggestString {
 		if (text.isEmpty()) {
 			return {""};
 		}
-		Pattern p = Pattern.compile(regex);
+		Pattern p = Pattern.compile("");
 		Matcher m = p.matcher(text);
 		while(m.find()){
 			words.add(m.group(1));
