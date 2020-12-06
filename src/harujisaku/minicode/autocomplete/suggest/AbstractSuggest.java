@@ -16,7 +16,7 @@ public abstract class AbstractSuggest {
 	public String[] search(String text){
 		List<String> result = new LinkedList<String>();
 		for (final String str : words.toArray(new String[words.size()])) {
-			if (text.contains(str.substring(0,Math.min(text.length(),str.length())))) {
+			if (text.startsWith(str.substring(0,Math.min(text.length(),str.length())))) {
 				result.add(str);
 			}
 		}
@@ -26,7 +26,7 @@ public abstract class AbstractSuggest {
 	
 	public boolean hasValue(String text){
 		for (final String str :words.toArray(new String[words.size()]) ) {
-			if (text.contains(str.substring(0,Math.min(text.length(),str.length())))) {
+			if (text.startsWith(str.substring(0,Math.min(text.length(),str.length())))) {
 				return true;
 			}
 		}
