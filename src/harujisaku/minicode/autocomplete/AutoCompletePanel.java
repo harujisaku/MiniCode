@@ -182,4 +182,8 @@ public class AutoCompletePanel extends JPopupMenu{
 		setVisible(false);
 		isShow=false;
 	}
+	
+	public boolean isShow(){
+		return isShow;
+	}
 }

@@ -18,7 +18,10 @@ import javax.swing.text.TabSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
+import javax.swing.text.BadLocationException;
+
 public class JCodePane extends JTextPane {
+	protected int tabLength=0;
 	public JCodePane(){
 		setTabSize(4);
 		getDocument().putProperty(DefaultEditorKit.EndOfLineStringProperty,"\n");
@@ -27,10 +30,16 @@ public class JCodePane extends JTextPane {
 		AutoCompletePanel autoComplete = new AutoCompletePanel(this);
 		addKeyListener(new KeyListener(){
 			@Override
-			public void keyTyped(KeyEvent e){}
+			public void keyTyped(KeyEvent e){
+			}
 
 			@Override
 			public void keyPressed(KeyEvent e){
+				if (e.getKeyCode()==KeyEvent.VK_ENTER&&!autoComplete.isShow()) {
+					final int position = getCaretPosition();
+					tabLength = charCount(getText().substring(indexOfHeadOfLine(position-1),indexOfEndOfLine(position)).replace("\n",""),'\t');
+					System.out.println(tabLength);
+				}
 				if (Character.isWhitespace(e.getKeyChar())) {
 					final int position = getCaretPosition();
 					SwingUtilities.invokeLater(new Runnable(){
@@ -50,7 +59,17 @@ public class JCodePane extends JTextPane {
 				}
 			}
 			@Override
-			public void keyReleased(KeyEvent e){}
+			public void keyReleased(KeyEvent e){
+				if (!autoComplete.isShow()&&e.getKeyCode()==KeyEvent.VK_ENTER) {
+					final int position = getCaretPosition();
+					try {
+						System.out.println(tabLength);
+						getDocument().insertString(position,stringRepeat("\t",tabLength),null);
+					} catch(BadLocationException ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
 		});
 	}
 	
@@ -71,9 +90,8 @@ public class JCodePane extends JTextPane {
 			return 0;
 		}
 		String text=getText();
-		char word;
 		int count=position;
-		while ((word=text.charAt(count))!='\n') {
+		while ((text.charAt(count))!='\n') {
 			count--;
 			if (count <= 0) {
 				return 0;
@@ -87,9 +105,8 @@ public class JCodePane extends JTextPane {
 		if (position>=text.length()) {
 			return text.length();
 		}
-		char word;
 		int count=position,max=text.length()-1;
-		while ((word=text.charAt(count))!='\n') {
+		while ((text.charAt(count))!='\n') {
 			count++;
 			if (count >= max) {
 				return max;
@@ -98,4 +115,27 @@ public class JCodePane extends JTextPane {
 		return count;
 	}
 	
+	public String getLine(int position){
+		String text=getText().substring(indexOfHeadOfLine(position-1),indexOfEndOfLine(position));
+		return text;
+	}
+	
+	public int charCount(String text,char c){
+		int count=0,index=0;
+		while(index<text.length()){
+			if (text.charAt(count)==c) {
+				count++;
+			}
+			index++;
+		}
+		return count;
+	}
+	
+	public static String stringRepeat(String text,int count){
+		StringBuffer br = new StringBuffer();
+		for (int i=0;i<count ;i++ ) {
+			br.append(text);
+		}
+		return br.toString();
+	}
 }
