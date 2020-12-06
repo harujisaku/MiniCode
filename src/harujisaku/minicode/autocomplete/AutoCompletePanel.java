@@ -24,7 +24,7 @@ public class AutoCompletePanel extends JPopupMenu{
 	private DefaultListModel model = new DefaultListModel();
 	private JList list = new JList(model);
 	private StringBuffer word=new StringBuffer();
-	private boolean isShow=false;
+	private boolean isShow=false,wasShow=false;
 	public  AutoCompletePanel(JTextPane textpane){
 		super();
 		this.textpane=textpane;
@@ -61,8 +61,8 @@ public class AutoCompletePanel extends JPopupMenu{
 						}
 						e.consume();
 					}
-					word.delete(0,word.length());
 					hidePanel();
+					word.delete(0,word.length());
 					return;
 				}else if (Character.isLetterOrDigit(e.getKeyChar())) {
 					SwingUtilities.invokeLater(new Runnable(){
@@ -79,6 +79,7 @@ public class AutoCompletePanel extends JPopupMenu{
 									return;
 								}
 								isShow=true;
+								wasShow=false;
 								showPanel();
 							}
 						}
@@ -180,10 +181,19 @@ public class AutoCompletePanel extends JPopupMenu{
 	private void hidePanel(){
 		model.clear();
 		setVisible(false);
-		isShow=false;
+		if (isShow) {
+			isShow=false;
+			wasShow=true;
+		}else{
+			wasShow=false;
+		}
 	}
 	
 	public boolean isShow(){
 		return isShow;
+	}
+	
+	public boolean wasShow(){
+		return wasShow;
 	}
 }

@@ -22,6 +22,7 @@ import javax.swing.text.BadLocationException;
 
 public class JCodePane extends JTextPane {
 	protected int tabLength=0;
+	private boolean wasAutoCompleteShow=false;
 	public JCodePane(){
 		setTabSize(4);
 		getDocument().putProperty(DefaultEditorKit.EndOfLineStringProperty,"\n");
@@ -35,9 +36,13 @@ public class JCodePane extends JTextPane {
 
 			@Override
 			public void keyPressed(KeyEvent e){
-				if (e.getKeyCode()==KeyEvent.VK_ENTER&&!autoComplete.isShow()) {
-					final int position = getCaretPosition();
-					tabLength = charCount(getText().substring(indexOfHeadOfLine(position-1),indexOfEndOfLine(position)).replace("\n",""),'\t');
+				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+					if (!autoComplete.wasShow()) {
+						System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+						final int position = getCaretPosition();
+						tabLength = charCount(getText().substring(indexOfHeadOfLine(position-1),indexOfEndOfLine(position)).replace("\n",""),'\t');
+					}
+					wasAutoCompleteShow = autoComplete.wasShow();
 					System.out.println(tabLength);
 				}
 				if (Character.isWhitespace(e.getKeyChar())) {
@@ -60,7 +65,7 @@ public class JCodePane extends JTextPane {
 			}
 			@Override
 			public void keyReleased(KeyEvent e){
-				if (!autoComplete.isShow()&&e.getKeyCode()==KeyEvent.VK_ENTER) {
+				if (!wasAutoCompleteShow&&e.getKeyCode()==KeyEvent.VK_ENTER) {
 					final int position = getCaretPosition();
 					try {
 						System.out.println(tabLength);
