@@ -3,6 +3,7 @@ package harujisaku.minicode.autocomplete.suggest;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 /*
 正規表現を使用しないでください。正規表現は時間がかかるため候補が出るまでのラグが長くなります。
 */
@@ -35,6 +36,7 @@ public abstract class AbstractSuggest {
 	
 	public void addAll(List list){
 		words.addAll(list);
+		words = new LinkedList<String>(new LinkedHashSet<>(words));
 	}
 	
 	public void add(String word){

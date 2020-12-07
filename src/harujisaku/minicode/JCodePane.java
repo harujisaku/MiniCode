@@ -38,7 +38,6 @@ public class JCodePane extends JTextPane {
 			public void keyPressed(KeyEvent e){
 				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 					if (!autoComplete.wasShow()) {
-						System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 						final int position = getCaretPosition();
 						tabLength = charCount(getText().substring(indexOfHeadOfLine(position-1),indexOfEndOfLine(position)).replace("\n",""),'\t');
 					}

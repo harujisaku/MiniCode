@@ -22,6 +22,7 @@ import javax.swing.text.BadLocationException;
 public class AutoCompletePanel extends JPopupMenu{
 	AbstractSuggest suggestString = new JavaSuggest();
  	private JTextPane textpane;
+	public AutoMakeSuggestString autoMakeSuggestString;
 	private DefaultListModel model = new DefaultListModel();
 	private JList list = new JList(model);
 	private StringBuffer word=new StringBuffer();
@@ -29,6 +30,7 @@ public class AutoCompletePanel extends JPopupMenu{
 	public  AutoCompletePanel(JTextPane textpane){
 		super();
 		this.textpane=textpane;
+		autoMakeSuggestString  = new AutoMakeSuggestString(textpane,suggestString);
 		removeAll();
 		setOpaque(false);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -51,6 +53,7 @@ public class AutoCompletePanel extends JPopupMenu{
 			public void keyPressed(KeyEvent e){
 				final int position = textpane.getCaretPosition();
 				if (e.getKeyCode()==KeyEvent.VK_UP||e.getKeyCode()==KeyEvent.VK_DOWN) {
+					e.consume();
 					return;
 				}
 				if (Character.isWhitespace(e.getKeyChar())) {
@@ -87,6 +90,13 @@ public class AutoCompletePanel extends JPopupMenu{
 						hidePanel();
 						word.delete(0,word.length());
 					}
+					SwingUtilities.invokeLater(new Runnable(){
+						@Override
+						public void run(){
+							System.out.println(textpane.getText().substring(indexOfHeadOfLine(position-50),indexOfEndOfLine(position+50)));
+							autoMakeSuggestString.makeSuggest(indexOfHeadOfLine(position-50),indexOfEndOfLine(position+50));
+						}
+					});
 					return;
 				}else if (Character.isLetterOrDigit(e.getKeyChar())) {
 					SwingUtilities.invokeLater(new Runnable(){
@@ -219,5 +229,35 @@ public class AutoCompletePanel extends JPopupMenu{
 	
 	public boolean wasShow(){
 		return wasShow;
+	}
+	
+	public int indexOfHeadOfLine(int position){
+		if (position<=0) {
+			return 0;
+		}
+		String text=textpane.getText();
+		int count=position;
+		while ((text.charAt(count))!='\n') {
+			count--;
+			if (count <= 0) {
+				return 0;
+			}
+		}
+		return count;
+	}
+	
+	public int indexOfEndOfLine(int position){
+		String text=textpane.getText();
+		if (position>=text.length()) {
+			return text.length();
+		}
+		int count=position,max=text.length()-1;
+		while ((text.charAt(count))!='\n') {
+			count++;
+			if (count >= max) {
+				return max;
+			}
+		}
+		return count;
 	}
 }
