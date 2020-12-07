@@ -9,6 +9,8 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JTextPane;
+import javax.swing.UIManager;
+import javax.swing.SwingUtilities;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultEditorKit;
 import javax.swing.text.StyleConstants;
@@ -37,5 +39,12 @@ public class MiniCode extends JFrame{
 	}
 	
 	public void myMain(String[] args){
+		String lafClassName = UIManager.getSystemLookAndFeelClassName();
+		try{
+			UIManager.setLookAndFeel(lafClassName);
+			SwingUtilities.updateComponentTreeUI(this);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }

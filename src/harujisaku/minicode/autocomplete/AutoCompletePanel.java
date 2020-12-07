@@ -59,7 +59,7 @@ public class AutoCompletePanel extends JPopupMenu{
 				if (Character.isWhitespace(e.getKeyChar())) {
 					if (e.getKeyChar()=='\n'&&isShow) {
 						try {
-							textpane.getDocument().insertString(position,getSelectedString().substring(word.length()),null);
+							textpane.getDocument().insertString(position,getSelectedString().substring(Math.min(word.length(),getSelectedString().length())),null);
 						} catch(BadLocationException e2) {
 							e2.printStackTrace();
 						}
