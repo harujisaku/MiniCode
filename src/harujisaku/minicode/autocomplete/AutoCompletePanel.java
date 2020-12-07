@@ -65,7 +65,6 @@ public class AutoCompletePanel extends JPopupMenu{
 						word.delete(0,word.length());
 					}else if(e.getKeyChar()==' '&&!isShow&&(e.getModifiersEx()&InputEvent.CTRL_DOWN_MASK)!=0){
 						e.consume();
-						System.out.println("aiueokakikukekosasisuseso");
 						SwingUtilities.invokeLater(new Runnable(){
 							@Override
 							public void run(){
