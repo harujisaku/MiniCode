@@ -8,6 +8,8 @@ import java.util.LinkedHashSet;
 正規表現を使用しないでください。正規表現は時間がかかるため候補が出るまでのラグが長くなります。
 */
 public abstract class AbstractSuggest {
+	public String REPEAT_LETTER = "[({\"'`";
+	public String REPEAT_LETTER_OTHER = "])}\"'`";
 	protected String[] defaultWords = {""};
 	public String[] lastResult = {""};
 	protected List<String> words;
@@ -53,5 +55,31 @@ public abstract class AbstractSuggest {
 	
 	public boolean remove(String word){
 		return words.remove(word);
+	}
+	
+	public boolean isRepeatLetter(char c){
+		int repeatLetterLength = REPEAT_LETTER.length();
+		int count=0;
+		while (c!=REPEAT_LETTER.charAt(count)) {
+			System.out.println(REPEAT_LETTER.charAt(count));
+			count++;
+			if (repeatLetterLength-1<count) {
+				return false;
+			}
+			System.out.println(count);
+		}
+		return true;
+	}
+	
+	public String repeatLetter(char c){
+		int repeatLetterLength = REPEAT_LETTER.length();
+		int count=0;
+		while(c!=REPEAT_LETTER.charAt(count)){
+			count++;
+			if (repeatLetterLength-1<count) {
+				return "";
+			}
+		}
+		return String.valueOf(REPEAT_LETTER_OTHER.charAt(count));
 	}
 }

@@ -18,6 +18,7 @@ import javax.swing.text.SimpleAttributeSet;
 
 public class MiniCode extends JFrame{
 	public static String WHITE_SPACE_REGEX = "[/\\\\(\\)\"':,.;<>~\\!@#$%\\^&*\\|\\+=\\[\\]\\{\\}`\\?\\-…]";
+	public static String REPEAT_LETTER_REGEX = "[\\[\\]\\(\\)\\{\\}\"'`]";
 	String title = "untitled";
 	JCodePane textPane = new JCodePane();
 	

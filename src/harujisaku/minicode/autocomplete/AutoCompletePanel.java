@@ -126,6 +126,7 @@ public class AutoCompletePanel extends JPopupMenu{
 			
 			@Override
 			public void keyTyped(KeyEvent e){
+				
 			}
 			
 			@Override
@@ -136,7 +137,16 @@ public class AutoCompletePanel extends JPopupMenu{
 				}else if(e.getKeyCode()==KeyEvent.VK_UP&&isShow){
 					list.setSelectedIndex(Math.max(list.getSelectedIndex()-1,0));
 					e.consume();
-		}}});
+				}
+				try {
+					textpane.getDocument().insertString(textpane.getCaretPosition(),suggestString.repeatLetter(e.getKeyChar()),null);
+					if (suggestString.isRepeatLetter(e.getKeyChar())) {
+						textpane.setCaretPosition(textpane.getCaretPosition()-1);
+					}
+				} catch(BadLocationException ex) {
+					ex.printStackTrace();
+				}
+		}});
 	}
 	
 	private boolean updateWordList(){
