@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
+import java.awt.event.InputEvent;
 
 import javax.swing.JPopupMenu;
 import javax.swing.JTextPane;
@@ -60,9 +61,33 @@ public class AutoCompletePanel extends JPopupMenu{
 							e2.printStackTrace();
 						}
 						e.consume();
+						hidePanel();
+						word.delete(0,word.length());
+					}else if(e.getKeyChar()==' '&&!isShow&&(e.getModifiersEx()&InputEvent.CTRL_DOWN_MASK)!=0){
+						e.consume();
+						System.out.println("aiueokakikukekosasisuseso");
+						SwingUtilities.invokeLater(new Runnable(){
+							@Override
+							public void run(){
+								if (word.length()==0) {
+									word.append(getWord(position-1));
+								}
+								if (word.length()>=2) {
+									model.clear();
+									if (!updateWordList()) {
+										hidePanel();
+										return;
+									}
+									isShow=true;
+									wasShow=false;
+									showPanel();
+								}
+							}
+						});
+					}else{
+						hidePanel();
+						word.delete(0,word.length());
 					}
-					hidePanel();
-					word.delete(0,word.length());
 					return;
 				}else if (Character.isLetterOrDigit(e.getKeyChar())) {
 					SwingUtilities.invokeLater(new Runnable(){
