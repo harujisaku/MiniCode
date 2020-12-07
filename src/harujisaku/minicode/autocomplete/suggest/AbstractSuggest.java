@@ -61,12 +61,10 @@ public abstract class AbstractSuggest {
 		int repeatLetterLength = REPEAT_LETTER.length();
 		int count=0;
 		while (c!=REPEAT_LETTER.charAt(count)) {
-			System.out.println(REPEAT_LETTER.charAt(count));
 			count++;
 			if (repeatLetterLength-1<count) {
 				return false;
 			}
-			System.out.println(count);
 		}
 		return true;
 	}
