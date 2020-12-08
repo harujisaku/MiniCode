@@ -52,7 +52,7 @@ public class AutoCompletePanel extends JPopupMenu{
 			@Override
 			public void keyPressed(KeyEvent e){
 				final int position = textpane.getCaretPosition();
-				if (e.getKeyCode()==KeyEvent.VK_UP||e.getKeyCode()==KeyEvent.VK_DOWN) {
+				if( (e.getKeyCode()==KeyEvent.VK_UP||e.getKeyCode()==KeyEvent.VK_DOWN)&&isShow) {
 					e.consume();
 					return;
 				}

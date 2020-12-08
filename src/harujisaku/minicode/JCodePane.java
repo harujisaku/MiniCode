@@ -23,8 +23,13 @@ import javax.swing.text.BadLocationException;
 public class JCodePane extends JTextPane {
 	protected int tabLength=0;
 	private boolean wasAutoCompleteShow=false;
+	
 	public JCodePane(){
-		setTabSize(4);
+		new JCodePane(4);
+	}
+	
+	public JCodePane(int tabSize){
+		setTabSize(tabSize);
 		getDocument().putProperty(DefaultEditorKit.EndOfLineStringProperty,"\n");
 		AbstractHighlight highlightStyle = new JavaHighlight();
 		Highlight highlight = new Highlight(highlightStyle,this);

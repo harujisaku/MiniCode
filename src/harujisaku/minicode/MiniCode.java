@@ -1,11 +1,14 @@
 package harujisaku.minicode;
 
+import harujisaku.minicode.panel.JCodePanel;
+
 import java.util.regex.*;
 
 import java.awt.Point;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JTextPane;
@@ -20,17 +23,16 @@ public class MiniCode extends JFrame{
 	public static String WHITE_SPACE_REGEX = "[/\\\\(\\)\"':,.;<>~\\!@#$%\\^&*\\|\\+=\\[\\]\\{\\}`\\?\\-…]";
 	public static String REPEAT_LETTER_REGEX = "[\\[\\]\\(\\)\\{\\}\"'`]";
 	String title = "untitled";
-	JCodePane textPane = new JCodePane();
+	JCodePanel textPanel = new JCodePanel(4);
 	
 	
 	MiniCode(){
 		setTitle(title);
-		getContentPane().setPreferredSize(new Dimension(500,500));
-		pack();
+		setSize(500,500);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		textPane.setBounds(0,0,500,500);
-		getContentPane().add(textPane);
+		getContentPane().add(textPanel,BorderLayout.CENTER);
+		pack();
 		setVisible(true);
 	}
 
