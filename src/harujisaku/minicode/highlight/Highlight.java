@@ -61,7 +61,6 @@ public class Highlight{
 		}
 		buff.deleteCharAt(buff.length() - 1);
 		buff.append(")");
-		System.out.println(buff.toString());
 		return buff.toString();
 	}
 	
