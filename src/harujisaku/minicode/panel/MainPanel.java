@@ -13,8 +13,9 @@ public class MainPanel extends JPanel {
 		JConsolePanel console = new JConsolePanel();
 		JCodePanel code = new JCodePanel(4);
 		JSplitPane splitpane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		splitpane.setTopComponent(code);
+		splitpane.setResizeWeight(1.0);
 		splitpane.setBottomComponent(console);
+		splitpane.setTopComponent(code);
 		add(splitpane,BorderLayout.CENTER);
 	}
 	
