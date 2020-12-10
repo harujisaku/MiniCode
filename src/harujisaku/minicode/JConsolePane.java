@@ -30,12 +30,7 @@ public class JConsolePane extends JTextArea{
 							BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream(),"CP932"));
 							String line;
 							while((line=reader.readLine())!=null){
-								System.out.println(line);
 								append(line+"\n");
-								for (char c : line.toCharArray() ) {
-									int i =c;
-									System.out.println(i);
-								}
 							}
 						}
 					} catch(Exception e) {

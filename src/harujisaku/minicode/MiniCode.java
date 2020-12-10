@@ -1,7 +1,6 @@
 package harujisaku.minicode;
 
-import harujisaku.minicode.panel.JCodePanel;
-import harujisaku.minicode.panel.JConsolePanel;
+import harujisaku.minicode.panel.*;
 
 import java.util.regex.*;
 
@@ -25,20 +24,19 @@ public class MiniCode extends JFrame{
 	public static String WHITE_SPACE_REGEX = "[/\\\\(\\)\"':,.;<>~\\!@#$%\\^&*\\|\\+=\\[\\]\\{\\}`\\?\\-…]";
 	public static String REPEAT_LETTER_REGEX = "[\\[\\]\\(\\)\\{\\}\"'`]";
 	String title = "untitled";
-	JCodePanel textPanel = new JCodePanel(4);
-	JConsolePanel consolePanel = new JConsolePanel();
 	Menu menu ;
+	MainPanel mainPanel = new MainPanel();
 	MiniCode(){
 		setTitle(title);
 		setSize(500,500);
 		setLocationRelativeTo(null);
+		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().add(textPanel,BorderLayout.CENTER);
-		getContentPane().add(consolePanel,BorderLayout.SOUTH);
-		pack();
-		setVisible(true);
+		getContentPane().add(mainPanel,BorderLayout.CENTER);
 		menu = new Menu(this);
 		setJMenuBar(menu);
+		pack();
+		setVisible(true);
 	}
 
 	public static void main(String[] args) {
@@ -54,9 +52,5 @@ public class MiniCode extends JFrame{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-	}
-	
-	public void save(){
-		textPanel.save();
 	}
 }

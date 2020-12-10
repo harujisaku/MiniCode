@@ -21,7 +21,7 @@ public class Menu extends JMenuBar{
 		save.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.save();
+				// m.save();
 			}
 		});
 		file.add(save);
