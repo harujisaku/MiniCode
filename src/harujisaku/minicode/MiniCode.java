@@ -27,17 +27,18 @@ public class MiniCode extends JFrame{
 	String title = "untitled";
 	JCodePanel textPanel = new JCodePanel(4);
 	JConsolePanel consolePanel = new JConsolePanel();
-	Menu menu = new Menu();
+	Menu menu ;
 	MiniCode(){
 		setTitle(title);
 		setSize(500,500);
-		setJMenuBar(menu);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().add(textPanel,BorderLayout.CENTER);
 		getContentPane().add(consolePanel,BorderLayout.SOUTH);
 		pack();
 		setVisible(true);
+		menu = new Menu(this);
+		setJMenuBar(menu);
 	}
 
 	public static void main(String[] args) {
@@ -53,5 +54,9 @@ public class MiniCode extends JFrame{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	public void save(){
+		textPanel.save();
 	}
 }

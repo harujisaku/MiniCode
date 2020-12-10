@@ -18,7 +18,7 @@ public class FileManager {
 		this.countDir=countDir;
 	}
 	
-	public static boolean save(File fileName,String text){
+	public static File save(File fileName,String text){
 		if (fileName==null) {
 			JFileChooser saveFile = new JFileChooser();
 			int selected =saveFile.showSaveDialog(null);
@@ -28,7 +28,6 @@ public class FileManager {
 			}
 		}
 		if (!isCanWriteFile(fileName)) {
-			return false;
 		}
 		try {
 			System.out.println(text);
@@ -36,11 +35,10 @@ public class FileManager {
 			fr.write(text.replaceAll("\n",LINE_SEPARATOR));
 			fr.close();
 			System.out.println("aa");
-			return true;
 		} catch(Exception e) {
 			e.printStackTrace();
-			return false;
 		}
+		return fileName;
 	}
 	
 	private static boolean isCanWriteFile(File file){

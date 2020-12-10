@@ -16,4 +16,8 @@ public class JCodePanel extends JScrollPane{
 		setViewportView(jcodePane);
 		setPreferredSize(new Dimension(500,500));
 	}
+	
+	public void save(){
+		jcodePane.save();
+	}
 }

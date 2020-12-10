@@ -3,6 +3,9 @@ package harujisaku.minicode;
 import harujisaku.minicode.highlight.*;
 import harujisaku.minicode.autocomplete.*;
 import harujisaku.minicode.autocomplete.suggest.*;
+import harujisaku.minicode.file.*;
+
+import java.io.File;
 
 import java.awt.FontMetrics;
 
@@ -23,7 +26,7 @@ import javax.swing.text.BadLocationException;
 public class JCodePane extends JTextPane {
 	protected int tabLength=0;
 	private boolean wasAutoCompleteShow=false;
-	
+	private File file = null;
 	public JCodePane(){
 		new JCodePane(4);
 	}
@@ -146,5 +149,9 @@ public class JCodePane extends JTextPane {
 			br.append(text);
 		}
 		return br.toString();
+	}
+	
+	public void save(){
+		file = FileManager.save(file,getText());
 	}
 }
