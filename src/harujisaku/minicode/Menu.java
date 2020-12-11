@@ -13,18 +13,26 @@ public class Menu extends JMenuBar{
 	public Menu(MiniCode m){
 		JMenu file = new JMenu("ファイル(F)");
 		JMenu edit = new JMenu("編集(E)");
-		JMenuItem save = new JMenuItem("保存(S)");
+		JMenuItem save = new JMenuItem("保存");
+		JMenuItem saveAs = new JMenuItem("名前を付けて保存");
 		file.setMnemonic(KeyEvent.VK_F);
 		edit.setMnemonic(KeyEvent.VK_E);
 		save.setMnemonic(KeyEvent.VK_S);
 		save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,InputEvent.CTRL_DOWN_MASK));
+		saveAs.setAccelerator(KeyStroke.getKeyStroke("control shift S"));
 		save.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
 				// m.save();
 			}
 		});
+		saveAs.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+			}
+		});
 		file.add(save);
+		file.add(saveAs);
 		add(file);
 		add(edit);
 	}
