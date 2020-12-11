@@ -16,8 +16,8 @@ public class MainPanel extends JPanel {
 		splitpane.setResizeWeight(1.0);
 		splitpane.setBottomComponent(console);
 		splitpane.setTopComponent(code);
-		splitpane.setDividerLocation(-1);
 		add(splitpane,BorderLayout.CENTER);
+		splitpane.setDividerLocation(-1);
 	}
 	
 	
