@@ -27,15 +27,26 @@ public class JCodePane extends JTextPane {
 	protected int tabLength=0;
 	private boolean wasAutoCompleteShow=false;
 	private File file = null;
+	protected Highlight highlight = null;
 	public JCodePane(){
 		new JCodePane(4);
 	}
 	
+	public JCodePane(int tabSize,File file){
+		setTabSize(tabSize);
+		this.file=file;
+	}
+	
 	public JCodePane(int tabSize){
 		setTabSize(tabSize);
+	}
+	
+	public void setSyntaxHighLight(AbstractHighlight highlightStyle){
+		highlight = new Highlight(highlightStyle,this);
+	}
+	
+	private void init(){
 		getDocument().putProperty(DefaultEditorKit.EndOfLineStringProperty,"\n");
-		AbstractHighlight highlightStyle = new JavaHighlight();
-		Highlight highlight = new Highlight(highlightStyle,this);
 		AutoCompletePanel autoComplete = new AutoCompletePanel(this);
 		addKeyListener(new KeyListener(){
 			@Override

@@ -24,6 +24,4 @@ public class MainPanel extends JPanel {
 		add(splitpane,BorderLayout.CENTER);
 		splitpane.setDividerLocation(-1);
 	}
-	
-	
 }

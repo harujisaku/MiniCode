@@ -2,9 +2,12 @@ package harujisaku.minicode.file;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.FileReader;
 import java.io.BufferedWriter;
+import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 
 import javax.swing.JFileChooser;
 
@@ -41,6 +44,32 @@ public class FileManager {
 		return fileName;
 	}
 	
+	public static String loadFile(File fileName){
+		if (fileName==null) {
+			return null;
+		}
+		try {
+			if (isCanReadFile(fileName)) {
+				BufferedReader br = new BufferedReader(new  FileReader(fileName));
+				StringBuffer str = new StringBuffer();
+				String line;
+				while ((line=br.readLine())!=null) {
+					str.append(line);
+				}
+				br.close();
+				return str.toString();
+			}else{
+				System.out.println("file not found");
+				return "error";
+			}
+		} catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "error";
+	}
+	
 	private static boolean isCanWriteFile(File file){
 		if (!file.exists()) {
 			try {
@@ -52,6 +81,15 @@ public class FileManager {
 			if (file.isFile()&&file.canWrite()) {
 				return true;
 			}
+		return false;
+	}
+	
+	private static boolean isCanReadFile(File file){
+		if (file.exists()) {
+			if (file.isFile()&&file.canRead()) {
+				return true;
+			}
+		}
 		return false;
 	}
 }
