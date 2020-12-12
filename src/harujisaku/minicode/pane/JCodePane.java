@@ -99,7 +99,7 @@ public class JCodePane extends JTextPane {
 	
 	public void setTabSize(int size){
 		FontMetrics fm=getFontMetrics(getFont());
-		TabStop[] tabs = new TabStop[10];
+		TabStop[] tabs = new TabStop[100];
 		for (int i=0,len=tabs.length;i<len ;i++ ) {
 			tabs[i] = new TabStop((i+1)*fm.charWidth(' ')*size);
 		}

@@ -14,6 +14,7 @@ public class JConsolePane extends JTextArea{
 	public PrintWriter writer;
 	Process p;
 	public JConsolePane(){
+		setEditable(false);
 		startShell("cmd");
 	}
 	
