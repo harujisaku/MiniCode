@@ -2,6 +2,7 @@ package harujisaku.minicode.panel;
 
 import harujisaku.minicode.*;
 import harujisaku.minicode.panel.*;
+import harujisaku.minicode.pane.*;
 
 import java.io.File;
 
@@ -15,11 +16,13 @@ import javax.swing.SwingUtilities;
 import java.awt.BorderLayout;
 
 public class MainPanel extends JPanel {
-	List<JCodePanel> codePanelList = new ArrayList<JCodePanel>();
-	public MainPanel(){
+	CodePaneManager codePanelList;
+	public MainPanel(CodePaneManager codePanelList){
+		this.codePanelList=codePanelList;
 		setLayout(new BorderLayout());
 		JConsolePanel console = new JConsolePanel();
-		codePanelList.add(new JCodePanel(4,new File("C:\\Users\\haruj\\Documents\\GitHub\\MiniCode\\src\\harujisaku\\minicode\\panel\\JCodePanel.java")));
+		codePanelList.add(4,new File("C:\\Users\\haruj\\Documents\\GitHub\\MiniCode\\src\\harujisaku\\minicode\\panel\\JCodePanel.java"));
+		System.out.println(codePanelList.getCodePaneList().size());
 		JSplitPane splitpane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		splitpane.setResizeWeight(1.0);
 		splitpane.setBottomComponent(console);
@@ -31,5 +34,9 @@ public class MainPanel extends JPanel {
 				add(splitpane,BorderLayout.CENTER);
 			}
 		});
+	}
+	
+	public JCodePanel getSelectedPane(){
+		return codePanelList.get(0);
 	}
 }

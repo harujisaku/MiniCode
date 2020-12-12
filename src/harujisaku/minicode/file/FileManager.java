@@ -70,6 +70,15 @@ public class FileManager {
 		return "error";
 	}
 	
+	public static File load(){
+		JFileChooser loadFile = new JFileChooser();
+		int selected = loadFile.showOpenDialog(null);
+		if(selected==JFileChooser.APPROVE_OPTION){
+			return loadFile.getSelectedFile();
+		}
+		return null;
+	}
+	
 	private static boolean isCanWriteFile(File file){
 		if (!file.exists()) {
 			try {

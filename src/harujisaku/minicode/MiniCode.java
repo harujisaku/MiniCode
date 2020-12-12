@@ -1,6 +1,7 @@
 package harujisaku.minicode;
 
 import harujisaku.minicode.panel.*;
+import harujisaku.minicode.pane.*;
 
 import java.util.regex.*;
 
@@ -25,7 +26,8 @@ public class MiniCode extends JFrame{
 	public static String REPEAT_LETTER_REGEX = "[\\[\\]\\(\\)\\{\\}\"'`]";
 	String title = "untitled";
 	Menu menu ;
-	MainPanel mainPanel = new MainPanel();
+	CodePaneManager codePane = new CodePaneManager();
+	MainPanel mainPanel = new MainPanel(codePane);
 	MiniCode(){
 		setTitle(title);
 		setSize(500,500);
@@ -45,12 +47,26 @@ public class MiniCode extends JFrame{
 	}
 	
 	public void myMain(String[] args){
-		String lafClassName = UIManager.getSystemLookAndFeelClassName();
-		try{
-			UIManager.setLookAndFeel(lafClassName);
-			SwingUtilities.updateComponentTreeUI(this);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		MiniCode a = this;
+		SwingUtilities.invokeLater(new Runnable(){
+			@Override
+			public void run(){
+				String lafClassName = UIManager.getSystemLookAndFeelClassName();
+				try{
+					UIManager.setLookAndFeel(lafClassName);
+					SwingUtilities.updateComponentTreeUI(a);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	public MainPanel getMainPanel(){
+		return mainPanel;
+	}
+	
+	public CodePaneManager getCodePaneManager(){
+		return codePane;
 	}
 }

@@ -10,7 +10,9 @@ import java.awt.Dimension;
 public class JCodePanel extends JScrollPane{
 	JCodePane jcodePane;
 	public JCodePanel(){
-		new JCodePanel(4);
+		jcodePane  = new JCodePane(4);
+		setViewportView(jcodePane);
+		setPreferredSize(new Dimension(500,500));
 	}
 	
 	public JCodePanel(int tabSize){
@@ -25,7 +27,15 @@ public class JCodePanel extends JScrollPane{
 		setPreferredSize(new Dimension(500,500));
 	}
 	
+	public void setTabSize(int i){
+		jcodePane.setTabSize(i);
+	}
+	
 	public void save(){
 		jcodePane.save();
+	}
+	
+	public void saveAs(){
+		jcodePane.saveAs();
 	}
 }

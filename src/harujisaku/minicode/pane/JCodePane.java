@@ -97,7 +97,7 @@ public class JCodePane extends JTextPane {
 		});
 	}
 	
-	private void setTabSize(int size){
+	public void setTabSize(int size){
 		FontMetrics fm=getFontMetrics(getFont());
 		TabStop[] tabs = new TabStop[10];
 		for (int i=0,len=tabs.length;i<len ;i++ ) {
@@ -165,5 +165,9 @@ public class JCodePane extends JTextPane {
 	
 	public void save(){
 		file = FileManager.save(file,getText());
+	}
+	
+	public void saveAs(){
+		file = FileManager.save(null,getText());
 	}
 }
