@@ -3,8 +3,10 @@ package harujisaku.minicode.file;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
@@ -37,7 +39,6 @@ public class FileManager {
 			FileWriter fr = new FileWriter(fileName);
 			fr.write(text.replaceAll("\n",LINE_SEPARATOR));
 			fr.close();
-			System.out.println("aa");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -50,7 +51,7 @@ public class FileManager {
 		}
 		try {
 			if (isCanReadFile(fileName)) {
-				BufferedReader br = new BufferedReader(new  FileReader(fileName));
+				BufferedReader br = new BufferedReader(new InputStreamReader(new  FileInputStream(fileName),"UTF-8"));
 				StringBuffer str = new StringBuffer();
 				String line;
 				while ((line=br.readLine())!=null) {
