@@ -27,7 +27,7 @@ import javax.swing.text.SimpleAttributeSet;
 public class MiniCode extends JFrame{
 	public static String WHITE_SPACE_REGEX = "[/\\\\(\\)\"':,.;<>~\\!@#$%\\^&*\\|\\+=\\[\\]\\{\\}`\\?\\-…]";
 	public static String REPEAT_LETTER_REGEX = "[\\[\\]\\(\\)\\{\\}\"'`]";
-	MainFrame mainFrame = new MainFrame();
+	MainFrame mainFrame = new MainFrame(this);
 	ReplaceFrame replaceFrame = new ReplaceFrame();
 	MiniCode(){
 	}

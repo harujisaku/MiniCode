@@ -67,6 +67,16 @@ public class Menu extends JMenuBar{
 				System.exit(0);
 			}
 		});
+		findReplace.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				if (m.getMiniCode().getReplaceFrame().isVisible()) {
+					m.getMiniCode().getReplaceFrame().setVisible(false);
+				}else{
+					m.getMiniCode().getReplaceFrame().setVisible(true);
+				}
+			}
+		});
 		tab2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){

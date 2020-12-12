@@ -18,7 +18,8 @@ public class MainFrame extends JFrame {
 	String title = "untitled";
 	CodePaneManager codePaneManager = new CodePaneManager();
 	MainPanel mainPanel = new MainPanel(codePaneManager);
-	public MainFrame(){
+	MiniCode m;
+	public MainFrame(MiniCode m){
 		setTitle(title);
 		setLocationRelativeTo(null);
 		setLayout(new BorderLayout());
@@ -27,6 +28,7 @@ public class MainFrame extends JFrame {
 		Menu menu = new Menu(this);
 		setJMenuBar(menu);
 		pack();
+		this.m=m;
 		JFrame a = this;
 		SwingUtilities.invokeLater(new Runnable(){
 			@Override
@@ -54,5 +56,9 @@ public class MainFrame extends JFrame {
 	
 	public CodePaneManager getCodePaneManager(){
 		return codePaneManager;
+	}
+	
+	public MiniCode getMiniCode(){
+		return m;
 	}
 }
