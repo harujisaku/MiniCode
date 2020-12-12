@@ -54,7 +54,7 @@ public class FileManager {
 				StringBuffer str = new StringBuffer();
 				String line;
 				while ((line=br.readLine())!=null) {
-					str.append(line);
+					str.append(line+"\n");
 				}
 				br.close();
 				return str.toString();

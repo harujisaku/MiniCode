@@ -1,4 +1,4 @@
-package harujisaku.minicode;
+package harujisaku.minicode.pane;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;

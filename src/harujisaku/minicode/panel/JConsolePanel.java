@@ -1,6 +1,7 @@
 package harujisaku.minicode.panel;
 
 import harujisaku.minicode.*;
+import harujisaku.minicode.pane.*;
 
 import java.awt.Dimension;
 import javax.swing.JScrollPane;

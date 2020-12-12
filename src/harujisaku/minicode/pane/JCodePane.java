@@ -1,4 +1,4 @@
-package harujisaku.minicode;
+package harujisaku.minicode.pane;
 
 import harujisaku.minicode.highlight.*;
 import harujisaku.minicode.autocomplete.*;
@@ -35,6 +35,7 @@ public class JCodePane extends JTextPane {
 	public JCodePane(int tabSize,File file){
 		setTabSize(tabSize);
 		this.file=file;
+		setText(FileManager.loadFile(file)) ;
 	}
 	
 	public JCodePane(int tabSize){
