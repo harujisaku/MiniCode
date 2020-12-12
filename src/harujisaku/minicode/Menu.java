@@ -24,6 +24,7 @@ public class Menu extends JMenuBar{
 		JMenuItem save = new JMenuItem("保存");
 		JMenuItem saveAs = new JMenuItem("名前を付けて保存");
 		JMenuItem open = new JMenuItem("開く");
+		JMenuItem exit = new JMenuItem("終了");
 		JRadioButtonMenuItem tab2 = new JRadioButtonMenuItem("2");
 		JRadioButtonMenuItem tab4 = new JRadioButtonMenuItem("4");
 		JRadioButtonMenuItem tab8 = new JRadioButtonMenuItem("8");
@@ -35,6 +36,7 @@ public class Menu extends JMenuBar{
 		save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,InputEvent.CTRL_DOWN_MASK));
 		saveAs.setAccelerator(KeyStroke.getKeyStroke("control shift S"));
 		open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O,InputEvent.CTRL_DOWN_MASK));
+		exit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,InputEvent.CTRL_DOWN_MASK));
 		save.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -54,6 +56,13 @@ public class Menu extends JMenuBar{
 			public void actionPerformed(ActionEvent e){
 				m.getCodePaneManager().add(FileManager.load());
 				m.getCodePaneManager().setSelectedIndex(m.getCodePaneManager().getTabCount()-1);
+			}
+		});
+		exit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				m.dispose();
+				System.exit(0);
 			}
 		});
 		tab2.addActionListener(new ActionListener(){
@@ -86,6 +95,7 @@ public class Menu extends JMenuBar{
 		file.add(save);
 		file.add(saveAs);
 		file.add(open);
+		file.add(exit);
 		tabSize.add(tab2);
 		tabSize.add(tab4);
 		tabSize.add(tab8);
