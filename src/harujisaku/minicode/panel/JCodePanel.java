@@ -27,19 +27,7 @@ public class JCodePanel extends JScrollPane{
 		setPreferredSize(new Dimension(500,500));
 	}
 	
-	public void setTabSize(int i){
-		jcodePane.setTabSize(i);
-	}
-	
-	public void save(){
-		jcodePane.save();
-	}
-	
-	public void saveAs(){
-		jcodePane.saveAs();
-	}
-	
-	public String getFileName(){
-		return jcodePane.getFileName();
+	public JCodePane getCodePane(){
+		return jcodePane;
 	}
 }

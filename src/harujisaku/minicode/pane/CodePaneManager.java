@@ -35,8 +35,10 @@ public class CodePaneManager extends JTabbedPane{
 	}
 	
 	public void add(int i,File file){
-		codePanelList.add(new JCodePanel(i,file));
-		addTab(file.getName(),codePanelList.get(codePanelList.size()-1));
+		if (file!=null) {
+			codePanelList.add(new JCodePanel(i,file));
+			addTab(file.getName(),codePanelList.get(codePanelList.size()-1));
+		}
 	}
 		
 	public void remove(int index){
@@ -54,8 +56,8 @@ public class CodePaneManager extends JTabbedPane{
 	
 	public void updateTabTitle(){
 		for(int i=0,len=codePanelList.size();i<len;i++){
-			System.out.println(codePanelList.get(i).getFileName());
-			setTitleAt(i,codePanelList.get(i).getFileName());
+			System.out.println(codePanelList.get(i).getCodePane().getFileName());
+			setTitleAt(i,codePanelList.get(i).getCodePane().getFileName());
 		}
 	}
 }

@@ -38,14 +38,14 @@ public class Menu extends JMenuBar{
 		save.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.getMainPanel().getSelectedPane().save();
+				m.getMainPanel().getSelectedPane().getCodePane().save();
 				m.getCodePaneManager().updateTabTitle();
 			}
 		});
 		saveAs.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.getMainPanel().getSelectedPane().saveAs();
+				m.getMainPanel().getSelectedPane().getCodePane().saveAs();
 				m.getCodePaneManager().updateTabTitle();
 			}
 		});
@@ -59,19 +59,19 @@ public class Menu extends JMenuBar{
 		tab2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.getMainPanel().getSelectedPane().setTabSize(2);
+				m.getMainPanel().getSelectedPane().getCodePane().setTabSize(2);
 			}
 		});
 		tab4.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.getMainPanel().getSelectedPane().setTabSize(4);
+				m.getMainPanel().getSelectedPane().getCodePane().setTabSize(4);
 			}
 		});
 		tab8.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.getMainPanel().getSelectedPane().setTabSize(8);
+				m.getMainPanel().getSelectedPane().getCodePane().setTabSize(8);
 			}
 		});
 		
