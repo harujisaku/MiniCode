@@ -21,12 +21,12 @@ public class MainPanel extends JPanel {
 		this.codePanelList=codePanelList;
 		setLayout(new BorderLayout());
 		JConsolePanel console = new JConsolePanel();
-		codePanelList.add(4,new File("C:\\Users\\haruj\\Documents\\GitHub\\MiniCode\\src\\harujisaku\\minicode\\panel\\JCodePanel.java"));
+		codePanelList.add(4);
 		System.out.println(codePanelList.getCodePaneList().size());
 		JSplitPane splitpane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		splitpane.setResizeWeight(1.0);
 		splitpane.setBottomComponent(console);
-		splitpane.setTopComponent(codePanelList.get(0));
+		splitpane.setTopComponent(codePanelList);
 		splitpane.setDividerLocation(-1);
 		SwingUtilities.invokeLater(new Runnable(){
 			@Override
@@ -37,6 +37,6 @@ public class MainPanel extends JPanel {
 	}
 	
 	public JCodePanel getSelectedPane(){
-		return codePanelList.get(0);
+		return codePanelList.get(codePanelList.getSelectedIndex());
 	}
 }

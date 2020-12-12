@@ -37,36 +37,41 @@ public class Menu extends JMenuBar{
 			@Override
 			public void actionPerformed(ActionEvent e){
 				m.getMainPanel().getSelectedPane().save();
+				System.out.println("aa");
+				m.getCodePaneManager().updateTabTitle();
 			}
 		});
 		saveAs.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
 				m.getMainPanel().getSelectedPane().saveAs();
+				System.out.println("aa");
+				m.getCodePaneManager().updateTabTitle();
 			}
 		});
 		open.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
 				m.getCodePaneManager().add(FileManager.load());
+				m.getCodePaneManager().setSelectedIndex(m.getCodePaneManager().getTabCount()-1);
 			}
 		});
 		tab2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.mainPanel.getSelectedPane().setTabSize(2);
+				m.getMainPanel().getSelectedPane().setTabSize(2);
 			}
 		});
 		tab4.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.mainPanel.getSelectedPane().setTabSize(4);
+				m.getMainPanel().getSelectedPane().setTabSize(4);
 			}
 		});
 		tab8.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.mainPanel.getSelectedPane().setTabSize(8);
+				m.getMainPanel().getSelectedPane().setTabSize(8);
 			}
 		});
 		

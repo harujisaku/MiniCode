@@ -38,4 +38,8 @@ public class JCodePanel extends JScrollPane{
 	public void saveAs(){
 		jcodePane.saveAs();
 	}
+	
+	public String getFileName(){
+		return jcodePane.getFileName();
+	}
 }

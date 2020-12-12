@@ -8,8 +8,10 @@ import java.util.regex.*;
 import java.awt.Point;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.BorderLayout;
+import java.awt.event.KeyListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
@@ -58,6 +60,12 @@ public class MiniCode extends JFrame{
 				}catch(Exception e){
 					e.printStackTrace();
 				}
+			}
+		});
+		codePane.addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent e){
+				setTitle(codePane.getTitleAt(codePane.getSelectedIndex()));
 			}
 		});
 	}

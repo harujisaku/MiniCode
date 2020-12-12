@@ -169,5 +169,10 @@ public class JCodePane extends JTextPane {
 	
 	public void saveAs(){
 		file = FileManager.save(null,getText());
+		setText(FileManager.loadFile(file));
+	}
+	
+	public String getFileName(){
+		return file.getName();
 	}
 }
