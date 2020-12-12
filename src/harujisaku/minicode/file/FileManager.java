@@ -47,7 +47,7 @@ public class FileManager {
 	
 	public static String loadFile(File fileName){
 		if (fileName==null) {
-			return null;
+			return "";
 		}
 		try {
 			if (isCanReadFile(fileName)) {

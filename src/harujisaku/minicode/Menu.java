@@ -33,11 +33,11 @@ public class Menu extends JMenuBar{
 		save.setMnemonic(KeyEvent.VK_S);
 		save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,InputEvent.CTRL_DOWN_MASK));
 		saveAs.setAccelerator(KeyStroke.getKeyStroke("control shift S"));
+		open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O,InputEvent.CTRL_DOWN_MASK));
 		save.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
 				m.getMainPanel().getSelectedPane().save();
-				System.out.println("aa");
 				m.getCodePaneManager().updateTabTitle();
 			}
 		});
@@ -45,7 +45,6 @@ public class Menu extends JMenuBar{
 			@Override
 			public void actionPerformed(ActionEvent e){
 				m.getMainPanel().getSelectedPane().saveAs();
-				System.out.println("aa");
 				m.getCodePaneManager().updateTabTitle();
 			}
 		});

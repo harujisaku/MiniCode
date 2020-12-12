@@ -18,8 +18,10 @@ public class CodePaneManager extends JTabbedPane{
 	}
 	
 	public void add(File file){
-		codePanelList.add(new JCodePanel(4,file));
-		addTab(file.getName(),codePanelList.get(codePanelList.size()-1));
+		if (file!=null) {		
+			codePanelList.add(new JCodePanel(4,file));
+			addTab(file.getName(),codePanelList.get(codePanelList.size()-1));
+		}
 	}
 	
 	public void add(){
