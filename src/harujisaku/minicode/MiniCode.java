@@ -28,6 +28,7 @@ public class MiniCode extends JFrame{
 	public static String WHITE_SPACE_REGEX = "[/\\\\(\\)\"':,.;<>~\\!@#$%\\^&*\\|\\+=\\[\\]\\{\\}`\\?\\-…]";
 	public static String REPEAT_LETTER_REGEX = "[\\[\\]\\(\\)\\{\\}\"'`]";
 	MainFrame mainFrame = new MainFrame();
+	ReplaceFrame replaceFrame = new ReplaceFrame();
 	MiniCode(){
 	}
 
@@ -39,8 +40,12 @@ public class MiniCode extends JFrame{
 	public void myMain(String[] args){
 	}
 	
-	public MainFrame getMainFramel(){
+	public MainFrame getMainFrame(){
 		return mainFrame;
+	}
+	
+	public ReplaceFrame getReplaceFrame(){
+		return replaceFrame;
 	}
 
 }

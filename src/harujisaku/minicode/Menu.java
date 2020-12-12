@@ -25,6 +25,7 @@ public class Menu extends JMenuBar{
 		JMenuItem saveAs = new JMenuItem("名前を付けて保存");
 		JMenuItem open = new JMenuItem("開く");
 		JMenuItem exit = new JMenuItem("終了");
+		JMenuItem findReplace = new JMenuItem("検索/置換");
 		JRadioButtonMenuItem tab2 = new JRadioButtonMenuItem("2");
 		JRadioButtonMenuItem tab4 = new JRadioButtonMenuItem("4");
 		JRadioButtonMenuItem tab8 = new JRadioButtonMenuItem("8");
@@ -37,6 +38,7 @@ public class Menu extends JMenuBar{
 		saveAs.setAccelerator(KeyStroke.getKeyStroke("control shift S"));
 		open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O,InputEvent.CTRL_DOWN_MASK));
 		exit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,InputEvent.CTRL_DOWN_MASK));
+		findReplace.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F,InputEvent.CTRL_DOWN_MASK));
 		save.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -96,6 +98,7 @@ public class Menu extends JMenuBar{
 		file.add(saveAs);
 		file.add(open);
 		file.add(exit);
+		edit.add(findReplace);
 		tabSize.add(tab2);
 		tabSize.add(tab4);
 		tabSize.add(tab8);
