@@ -1,6 +1,7 @@
 package harujisaku.minicode;
 
 import harujisaku.minicode.pane.*;
+import harujisaku.minicode.frame.*;
 import harujisaku.minicode.file.*;
 
 import javax.swing.JMenuBar;
@@ -15,7 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Menu extends JMenuBar{
-	public Menu(MiniCode m){
+	public Menu(MainFrame m){
 		JMenu file = new JMenu("ファイル(F)");
 		JMenu edit = new JMenu("編集(E)");
 		JMenu view = new JMenu("表示(V)");
