@@ -34,6 +34,8 @@ public class Menu extends JMenuBar{
 		JMenu edit = new JMenu("編集(E)");
 		JMenu view = new JMenu("表示(V)");
 		JMenu tabSize = new JMenu("タブ幅");
+		JMenu autoComplete = new JMenu("自動補完");
+		JMenu syntaxHighlight = new JMenu("シンタックスハイライト");
 		JMenuItem save = new JMenuItem("保存");
 		JMenuItem saveAs = new JMenuItem("名前を付けて保存");
 		JMenuItem open = new JMenuItem("開く");
@@ -42,6 +44,10 @@ public class Menu extends JMenuBar{
 		JRadioButtonMenuItem tab2 = new JRadioButtonMenuItem("2");
 		JRadioButtonMenuItem tab4 = new JRadioButtonMenuItem("4");
 		JRadioButtonMenuItem tab8 = new JRadioButtonMenuItem("8");
+		JRadioButtonMenuItem javaac = new JRadioButtonMenuItem("java");
+		JRadioButtonMenuItem textac = new JRadioButtonMenuItem("text");
+		JRadioButtonMenuItem javash = new JRadioButtonMenuItem("java");
+		JRadioButtonMenuItem textsh = new JRadioButtonMenuItem("text");
 		
 		file.setMnemonic(KeyEvent.VK_F);
 		edit.setMnemonic(KeyEvent.VK_E);
@@ -110,12 +116,22 @@ public class Menu extends JMenuBar{
 		});
 		
 		tab4.setSelected(true);
+		textac.setSelected(true);
+		textsh.setSelected(true);
 		
 		ButtonGroup tabSizeGroup = new ButtonGroup();
+		ButtonGroup autoCompleteGroup = new ButtonGroup();
+		ButtonGroup syntaxHighlightGroup = new ButtonGroup();
 		
 		tabSizeGroup.add(tab2);
 		tabSizeGroup.add(tab4);
 		tabSizeGroup.add(tab8);
+		
+		autoCompleteGroup.add(textac);
+		autoCompleteGroup.add(javaac);
+		
+		syntaxHighlightGroup.add(textsh);
+		syntaxHighlightGroup.add(javash);
 		
 		file.add(save);
 		file.add(saveAs);
@@ -125,7 +141,13 @@ public class Menu extends JMenuBar{
 		tabSize.add(tab2);
 		tabSize.add(tab4);
 		tabSize.add(tab8);
+		autoComplete.add(textac);
+		autoComplete.add(javaac);
+		syntaxHighlight.add(textsh);
+		syntaxHighlight.add(javash);
 		view.add(tabSize);
+		view.add(autoComplete);
+		view.add(syntaxHighlight);
 		add(file);
 		add(edit);
 		add(view);
