@@ -5,7 +5,7 @@ package harujisaku.minicode.replace;
 */
 
 public class Find{
-	private int start,end,length;
+	protected int start,end,length;
 	
 	/**
 	* 検索結果がなかった場合に使用するコンストラクタ

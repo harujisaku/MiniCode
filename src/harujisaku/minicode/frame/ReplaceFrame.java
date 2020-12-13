@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.text.JTextComponent;
+import javax.swing.text.BadLocationException;
 
 /**
 * 検索・置換クラス
@@ -27,12 +28,14 @@ public class ReplaceFrame extends JFrame{
 	JTextComponent textComponent;
 	FindReplace findReplace;
 	String regex="";
+	Find finds;
+	JTextField findText;
 	public ReplaceFrame(){
 		setTitle("Replace");
 		setLocationRelativeTo(null);
 		setSize(600,150);
 		setLayout(null);
-		JTextField findText = new JTextField(50);
+		findText = new JTextField(50);
 		JTextField replaceText = new JTextField(50);
 		JButton find = new JButton("Find");
 		JButton replace = new JButton("Replace");
@@ -47,23 +50,35 @@ public class ReplaceFrame extends JFrame{
 		find.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				if (textComponent!=(JTextComponent)CodePaneManager.selectingCodePanel.getCodePane()) {
-					textComponent=CodePaneManager.selectingCodePanel.getCodePane();
-					findReplace = new FindReplace(textComponent);
-					System.out.println("new");
-				}
-				String testRegex = findText.getText();
-				if (!regex.equals(testRegex)) {
-					findReplace.setFindRegex(testRegex);
-					regex=testRegex;
-					System.out.println("new");
-				}
-				Find find = findReplace.find();
-				textComponent.requestFocus();
-				System.out.println(find.getStart());
-				System.out.println(find.getEnd());
-				textComponent.select(find.getStart(),find.getEnd());
+				finds=find();
 			}
 		});
+		replace.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				try {
+					textComponent.getDocument().remove(finds.getStart(),finds.length());
+					textComponent.getDocument().insertString(finds.getStart(),replaceText.getText(),null);
+				} catch(BadLocationException ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	private Find find(){
+		if (textComponent!=(JTextComponent)CodePaneManager.selectingCodePanel.getCodePane()) {
+			textComponent=CodePaneManager.selectingCodePanel.getCodePane();
+			findReplace = new FindReplace(textComponent);
+		}
+		String testRegex = findText.getText();
+		if (!regex.equals(testRegex)) {
+			findReplace.setFindRegex(testRegex);
+			regex=testRegex;
+		}
+		Find find = findReplace.find();
+		textComponent.requestFocus();
+		textComponent.select(find.getStart(),find.getEnd());
+		return find;
 	}
 }
