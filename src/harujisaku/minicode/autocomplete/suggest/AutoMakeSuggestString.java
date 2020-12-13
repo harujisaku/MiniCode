@@ -66,6 +66,8 @@ public class AutoMakeSuggestString {
 	
 	/**
 	* 始点、終点を指定して補完文字列を作成します.
+	* @param start 始点
+	* @param end 終点
 	*/
 	
 	public void makeSuggest(int start,int end){

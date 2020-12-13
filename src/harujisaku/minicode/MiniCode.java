@@ -44,7 +44,8 @@ public class MiniCode{
 
 	/**
 	エントリーポイント.
-	{@link myMain(String[])}に処理が移る.
+	* {@link myMain(String[])}に処理が移る.
+	* @param args コマンドライン引数
 	*/
 
 	public static void main(String[] args) {
@@ -53,7 +54,8 @@ public class MiniCode{
 	}
 	
 	/**
-	非staticエントリーポイント
+	* 非staticエントリーポイント
+	* @param args コマンドライン引数
 	*/
 	
 	public void myMain(String[] args){
