@@ -26,6 +26,7 @@ public class FindReplace {
 	public FindReplace(JTextComponent textComponent){
 		this.textComponent=textComponent;
 		text=textComponent.getText();
+		text=text.replace("\r","");
 	}
 	
 	/**
@@ -36,7 +37,7 @@ public class FindReplace {
 	public void setFindRegex(String regex){
 		this.regex=regex;
 		try {
-			p = Pattern.compile(regex);
+			p = Pattern.compile(regex,Pattern.MULTILINE);
 			m = p.matcher(text);
 		} catch(PatternSyntaxException e) {
 			e.printStackTrace();
@@ -53,7 +54,12 @@ public class FindReplace {
 		if (regex==null||regex.isEmpty()) {
 			return new Find();
 		}
-		m.find();
-		return new Find(m.start(),m.end());
+		if (m.find()) {
+			return new Find(m.start(),m.end());
+		}
+		if (m.find(0)) {
+			return new Find(m.start(),m.end());
+		}
+		return new Find();
 	}
 }

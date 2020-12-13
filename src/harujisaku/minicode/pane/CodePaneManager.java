@@ -10,6 +10,8 @@ import java.util.List;
 import java.io.File;
 
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
 * たくさんのJCodePaneをListで管理するクラスです.
@@ -17,13 +19,18 @@ import javax.swing.JTabbedPane;
 
 public class CodePaneManager extends JTabbedPane{
 	List<JCodePanel> codePanelList = new ArrayList<JCodePanel>();
-	
+	public static JCodePanel selectingCodePanel = null;
 	/**
 	* デフォルトコンストラクタ
 	*/
 	
 	public CodePaneManager(){
-		
+		addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent e){
+				selectingCodePanel = get(getSelectedIndex());
+			}
+		});
 	}
 	
 	/**
