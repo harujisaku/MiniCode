@@ -10,13 +10,25 @@ import java.io.InputStreamReader;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+* コマンドプロンプトでコマンドを実行しそのコマンドの実行結果をtextAreaに出力することができるクラスです.
+*/
+
 public class JConsolePane extends JTextArea{
-	public PrintWriter writer;
+	PrintWriter writer;
 	Process p;
+	/**
+	* デフォルトコンストラクタ
+	*/
 	public JConsolePane(){
 		setEditable(false);
 		startShell("cmd");
 	}
+	
+	/**
+	* シェルを開始する
+	* @param shellName シェルの名前,cmd,bash等
+	*/
 	
 	public void startShell(String shellName){
 		try {
@@ -44,9 +56,19 @@ public class JConsolePane extends JTextArea{
 		}
 	}
 	
+	/**
+	* コマンドを実行します
+	* @param comand 実行するコマンド
+	*/
+	
 	public void runComand(String comand){
 		writer.println(comand);
 	}
+	
+	/**
+	* キーを送ります
+	* @param key 送るキーのchar
+	*/
 	
 	public void sendKey(char key){
 		writer.print(key);
