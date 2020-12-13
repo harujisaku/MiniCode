@@ -13,15 +13,40 @@ import java.io.FileNotFoundException;
 
 import javax.swing.JFileChooser;
 
+/**
+* ファイル管理をするクラスです.
+* staticなので呼び出すだけで大丈夫です
+* @author harujisaku
+* @version 1.0
+* @since 1.0
+*/
+
 public class FileManager {
+	
+	/**
+	デフォルトの改行コード
+	*/
+	
 	public static String LINE_SEPARATOR = "\r\n";
 	private static File countDir;
+	
+	/**
+	* デフォルトコンストラクタ.
+	* @param countDir カレントディレクトリ
+	*/
 	public FileManager(File countDir){
 		if (countDir.isFile()) {
 			countDir= new File(countDir.getPath());
 		}
 		this.countDir=countDir;
 	}
+	
+	/**
+	* ファイルを保存します.
+	* @param fileName 保存時のパスを設定します.null担っている場合ダイアログを出します.
+	* @param text 保存する文字列を設定します.
+	* @return 保存されたファイル
+	*/
 	
 	public static File save(File fileName,String text){
 		if (fileName==null) {
@@ -44,6 +69,12 @@ public class FileManager {
 		}
 		return fileName;
 	}
+	
+	/**
+	* 渡されたファイルを読み込みその中の文字列を返します
+	* @param fileName 読み込むファイル
+	* @return ファイルに保存されていた文字列
+	*/
 	
 	public static String loadFile(File fileName){
 		if (fileName==null) {
@@ -70,6 +101,12 @@ public class FileManager {
 		}
 		return "error";
 	}
+	
+	/**
+	* ファイルを開くダイアログを出して開くファイルを選択させます.
+	* 何も選択されなかった場合はnullが返されます
+	* @return 読み込むファイル
+	*/
 	
 	public static File load(){
 		JFileChooser loadFile = new JFileChooser();

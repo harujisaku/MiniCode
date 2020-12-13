@@ -10,6 +10,11 @@ public class JavaHighlight extends AbstractHighlight {
 	String[] GREEN_KEYWORDS = {"\".*\""};
 	String[] ORANGE_KEYWORDS = {"([A-Z]+[A-Z_]|null|true|false"+WHITE_SPACE_REGEX+"[0-9]+"+WHITE_SPACE_REGEX+")"};
 	String[] RED_KEYWORDS = {WHITE_SPACE_REGEX+"(super|this)"+WHITE_SPACE_REGEX};
+	
+	/**
+	* デフォルトコンストラクタ.
+	*/
+	
 	public JavaHighlight(){
 		super.MAGENTA_KEYWORDS=this.MAGENTA_KEYWORDS;
 		super.CYAN_KEYWORDS=this.CYAN_KEYWORDS;
@@ -19,6 +24,11 @@ public class JavaHighlight extends AbstractHighlight {
 		super.RED_KEYWORDS=this.RED_KEYWORDS;
 		super.WHITE_SPACE_REGEX=this.WHITE_SPACE_REGEX;
 	}
+	
+	/**
+	* コーテーションマークのときの動作を指定します.
+	* javaの場合は緑
+	*/
 	
 	@Override
 	public Color quotation(){

@@ -31,6 +31,12 @@ public class Highlight{
 	JTextPane editor;
 	private StyledDocument editordoc;
 	
+	/**
+	* デフォルトコンストラクタ.
+	* @param highlight ハイライトを定義しているクラス
+	* @param editor ハイライトするJTextPane
+	*/
+	
 	public Highlight(AbstractHighlight highlight,JTextPane editor){
 		this.highlight=highlight;
 		this.editor=editor;
@@ -64,9 +70,19 @@ public class Highlight{
 		return buff.toString();
 	}
 	
+	/**
+	* ハイライトする
+	*/
+	
 	public void highlight(){
 		highlight(0,editor.getText().length());
 	}
+	
+	/**
+	* 始点、終点を指定してハイライトする.
+	* @param start 始点
+	* @param end 終点
+	*/
 	
 	public void highlight(int start ,int end){
 		clearTextColors(start,end);
@@ -112,12 +128,22 @@ public class Highlight{
 		highlight(start,end,"\".*\"",c);
 	}
 	
+	/**
+	* ハイライトを除去する
+	*/
+	
 	public void clearTextColors(){
 		StyleContext sc = StyleContext.getDefaultStyleContext();
 		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,
 		StyleConstants.Foreground, Color.BLACK);
 		editordoc.setCharacterAttributes(0,editor.getText().length(), aset, true);
 	}
+	
+	/**
+	* 始点、終点を指定してハイライトを除去する
+	* @param start 始点
+	* @param end 終点
+	*/
 	
 	public void clearTextColors(int start,int end){
 		StyleContext sc = StyleContext.getDefaultStyleContext();

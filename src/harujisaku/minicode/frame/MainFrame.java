@@ -14,11 +14,21 @@ import javax.swing.UIManager;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+* メインのフレームです.
+*/
+
 public class MainFrame extends JFrame {
 	String title = "untitled";
 	CodePaneManager codePaneManager = new CodePaneManager();
 	MainPanel mainPanel = new MainPanel(codePaneManager);
 	MiniCode m;
+	
+	/**
+	* デフォルトコンストラクタ.
+	* @param m 設定元のMiniCode
+	*/
+	
 	public MainFrame(MiniCode m){
 		setTitle(title);
 		setLocationRelativeTo(null);
@@ -50,13 +60,28 @@ public class MainFrame extends JFrame {
 		});
 	}
 	
+	/**
+	* メインパネルを取得します.
+	* @return メインパネル
+	*/
+	
 	public MainPanel getMainPanel(){
 		return mainPanel;
 	}
 	
+	/**
+	* CodePaneManagerを取得します.
+	* @return CodePaneManager
+	*/
+	
 	public CodePaneManager getCodePaneManager(){
 		return codePaneManager;
 	}
+	
+	/**
+	* MiniCodeを取得します. 
+	* @return MiniCode. 
+	*/
 	
 	public MiniCode getMiniCode(){
 		return m;

@@ -19,14 +19,27 @@ import javax.swing.SwingUtilities;
 
 import javax.swing.text.BadLocationException;
 
+/**
+* 自動補完時に補完する文字列を選択するpanel.
+* @author harujisaku
+* @version 1.0
+* @since 1.0
+*/
+
 public class AutoCompletePanel extends JPopupMenu{
 	AbstractSuggest suggestString = new JavaSuggest();
  	private JTextPane textpane;
-	public AutoMakeSuggestString autoMakeSuggestString;
+	private  AutoMakeSuggestString autoMakeSuggestString;
 	private DefaultListModel model = new DefaultListModel();
 	private JList list = new JList(model);
 	private StringBuffer word=new StringBuffer();
 	private boolean isShow=false,wasShow=false;
+	
+	/**
+	* デフォルトコンストラクタ.
+	* @param textpane panelを追加するJTextPane
+	*/
+	
 	public  AutoCompletePanel(JTextPane textpane){
 		super();
 		this.textpane=textpane;
@@ -233,13 +246,29 @@ public class AutoCompletePanel extends JPopupMenu{
 		}
 	}
 	
+	/**
+	* 現在表示されているかを返します
+	* @return 現在表示されていたらtrue
+	*/
+	
 	public boolean isShow(){
 		return isShow;
 	}
 	
+	/**
+	* 表示されていたかを表示します
+	* @return 表示されていたならtrue
+	*/
+	
 	public boolean wasShow(){
 		return wasShow;
 	}
+	
+	/**
+	* 渡されたindexが属する行の行頭のindexを返します.
+	* @param position 検索を開始するindex
+	* @return 行頭のindex
+	*/
 	
 	public int indexOfHeadOfLine(int position){
 		if (position<=0) {
@@ -256,6 +285,12 @@ public class AutoCompletePanel extends JPopupMenu{
 		return count;
 	}
 	
+	/**
+	* 渡されたindexが属する行の行末のindexを返します.
+	* @param position 検索を開始するindex
+	* @return 行末のindex
+	*/
+
 	public int indexOfEndOfLine(int position){
 		String text=textpane.getText();
 		if (position>=text.length()) {
