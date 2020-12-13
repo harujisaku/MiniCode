@@ -15,7 +15,20 @@ import java.awt.event.InputEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+* メニューバーを管理するクラスです.
+* @author harujisaku
+* @version 1.0
+* @since 1.0
+*/
+
 public class Menu extends JMenuBar{
+	
+	/**
+	デフォルトコンストラクタ.
+	@param m メニューを表示しているJFrame
+	*/
+	
 	public Menu(MainFrame m){
 		JMenu file = new JMenu("ファイル(F)");
 		JMenu edit = new JMenu("編集(E)");

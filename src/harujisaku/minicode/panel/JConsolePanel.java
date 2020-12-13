@@ -17,12 +17,22 @@ import java.awt.event.AdjustmentListener;
 import java.awt.KeyboardFocusManager;
 import java.util.Collections;
 
+/**
+* {@link JConsolePane}を組み込んで使えるようにしたpanelです.
+*/
+
 public class JConsolePanel extends JPanel{
 	JButton runComandButton = new JButton("run");
 	JConsolePane console;
 	JScrollPane scrollPane = new JScrollPane();
 	JTextField textfield = new JTextField();
 	JPanel panel = new JPanel();
+	
+	/**
+	* デフォルトコンストラクタ.
+	標準のコンソールパネルを作成します。
+	*/
+	
 	public JConsolePanel(){
 		setLayout(new BorderLayout());
 		console = new JConsolePane();

@@ -7,7 +7,18 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+/**
+* 検索・置換クラス
+* @author harujisaku
+* @version 1.0
+* @since 1.0
+*/
+
 public class ReplaceFrame extends JFrame{
+	/**
+	* デフォルトコンストラクタ.
+	* ウィンドウが作成されますが表示されませんので手動で {@link java.awt.Window#setVisible(boolean)} してください。
+	*/
 	public ReplaceFrame(){
 		setTitle("Replace");
 		setLocationRelativeTo(null);
