@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Test</comment>
+<entry key="words">abstract  ,break;,catch,class ,case,default,do,else,final ,for,finally,if,import ,interface ,print,println,private ,protected ,public ,return ,static ,throw,try,void ,while,package</entry>
+<entry key="lang">java</entry>
+</properties>
