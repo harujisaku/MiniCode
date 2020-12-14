@@ -41,7 +41,7 @@ public class JCodePane extends JTextPane {
 	/**
 	シンタックスハイライトを保持する変数です.
 	*/
-	protected Highlight highlight = null;
+	protected Highlight highlight = new Highlight(new TextHighlight(),this);
 	
 	/**
 	* デフォルトコンストラクタ.
@@ -49,7 +49,8 @@ public class JCodePane extends JTextPane {
 	*/
 	
 	public JCodePane(){
-		new JCodePane(4);
+		setTabSize(4);
+		init();
 	}
 	
 	/**
@@ -63,6 +64,7 @@ public class JCodePane extends JTextPane {
 		setTabSize(tabSize);
 		this.file=file;
 		setText(FileManager.loadFile(file)) ;
+		init();
 	}
 	
 	/**
@@ -72,6 +74,7 @@ public class JCodePane extends JTextPane {
 	
 	public JCodePane(int tabSize){
 		setTabSize(tabSize);
+		init();
 	}
 	
 	/**

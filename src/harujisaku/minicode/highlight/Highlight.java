@@ -58,6 +58,9 @@ public class Highlight{
 	
 	private String makeRegex(String[] keywords){
 		if (keywords.length<2) {
+			if (keywords[0].isEmpty()) {
+				return "";
+			}
 			return keywords[0];
 		}
 		StringBuilder buff = new StringBuilder("");

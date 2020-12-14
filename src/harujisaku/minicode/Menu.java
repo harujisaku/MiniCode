@@ -3,6 +3,7 @@ package harujisaku.minicode;
 import harujisaku.minicode.pane.*;
 import harujisaku.minicode.frame.*;
 import harujisaku.minicode.file.*;
+import harujisaku.minicode.highlight.*;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -114,6 +115,20 @@ public class Menu extends JMenuBar{
 				m.getMainPanel().getSelectedPane().getCodePane().setTabSize(8);
 			}
 		});
+		textsh.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				m.getMainPanel().getSelectedPane().getCodePane().setSyntaxHighLight(new TextHighlight());
+			}
+		});
+		javash.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				CodePaneManager.selectingCodePanel.getCodePane().setSyntaxHighLight(new JavaHighlight());
+			}
+		});
+		
+		
 		
 		tab4.setSelected(true);
 		textac.setSelected(true);
