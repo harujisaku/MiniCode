@@ -1,6 +1,9 @@
 package harujisaku.minicode.textedit;
 
 import harujisaku.minicode.textedit.*;
+import harujisaku.minicode.file.*;
+
+import java.io.File;
 
 import java.awt.Point;
 
@@ -27,7 +30,7 @@ import javax.swing.text.BadLocationException;
 */
 
 public class AutoCompletePanel extends JPopupMenu{
-	AbstractSuggest suggestString = new JavaSuggest();
+	AutoCompleteLang suggestString = ReadACSFile.readFile((new File("C:\\Users\\haruj\\Documents\\GitHub\\MiniCode\\config\\autocomplete\\java.acs")));
  	private JTextPane textpane;
 	private  AutoMakeSuggestString autoMakeSuggestString;
 	private DefaultListModel model = new DefaultListModel();

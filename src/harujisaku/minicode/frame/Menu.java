@@ -118,13 +118,13 @@ public class Menu extends JMenuBar{
 		textsh.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.getMainPanel().getSelectedPane().getCodePane().setSyntaxHighLight(new TextHighlight());
+				// m.getMainPanel().getSelectedPane().getCodePane().setSyntaxHighLight(new TextHighlight());
 			}
 		});
 		javash.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				CodePaneManager.selectingCodePanel.getCodePane().setSyntaxHighLight(new JavaHighlight());
+				// CodePaneManager.selectingCodePanel.getCodePane().setSyntaxHighLight(new JavaHighlight());
 			}
 		});
 		

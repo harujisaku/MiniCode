@@ -12,7 +12,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 public class Highlight{
-	AbstractHighlight highlight;
+	// AbstractHighlight highlight;
 
 	String BLACK_KEYWORDS_REGEX="";
 	String BLUE_KEYWORDS_REGEX="";
@@ -37,24 +37,24 @@ public class Highlight{
 	* @param editor ハイライトするJTextPane
 	*/
 	
-	public Highlight(AbstractHighlight highlight,JTextPane editor){
-		this.highlight=highlight;
-		this.editor=editor;
-			BLACK_KEYWORDS_REGEX=makeRegex(highlight.BLACK_KEYWORDS);
-			BLUE_KEYWORDS_REGEX=makeRegex(highlight.BLUE_KEYWORDS);
-			CYAN_KEYWORDS_REGEX=makeRegex(highlight.CYAN_KEYWORDS);
-			DARK_GRAY_KEYWORDS_REGEX=makeRegex(highlight.DARK_GRAY_KEYWORDS);
-			GRAY_KEYWORDS_REGEX=makeRegex(highlight.GRAY_KEYWORDS);
-			GREEN_KEYWORDS_REGEX=makeRegex(highlight.GREEN_KEYWORDS);
-			LIGHT_GRAY_KEYWORDS_REGEX=makeRegex(highlight.LIGHT_GRAY_KEYWORDS);
-			MAGENTA_KEYWORDS_REGEX=makeRegex(highlight.MAGENTA_KEYWORDS);
-			ORANGE_KEYWORDS_REGEX=makeRegex(highlight.ORANGE_KEYWORDS);
-			PINK_KEYWORDS_REGEX=makeRegex(highlight.PINK_KEYWORDS);
-			RED_KEYWORDS_REGEX=makeRegex(highlight.RED_KEYWORDS);
-			WHITE_KEYWORDS_REGEX=makeRegex(highlight.WHITE_KEYWORDS);
-			YELLOW_KEYWORDS_REGEX=makeRegex(highlight.YELLOW_KEYWORDS);
-			editordoc = editor.getStyledDocument();
-	}
+	// public Highlight(AbstractHighlight highlight,JTextPane editor){
+	// 	this.highlight=highlight;
+	// 	this.editor=editor;
+	// 		BLACK_KEYWORDS_REGEX=makeRegex(highlight.BLACK_KEYWORDS);
+	// 		BLUE_KEYWORDS_REGEX=makeRegex(highlight.BLUE_KEYWORDS);
+	// 		CYAN_KEYWORDS_REGEX=makeRegex(highlight.CYAN_KEYWORDS);
+	// 		DARK_GRAY_KEYWORDS_REGEX=makeRegex(highlight.DARK_GRAY_KEYWORDS);
+	// 		GRAY_KEYWORDS_REGEX=makeRegex(highlight.GRAY_KEYWORDS);
+	// 		GREEN_KEYWORDS_REGEX=makeRegex(highlight.GREEN_KEYWORDS);
+	// 		LIGHT_GRAY_KEYWORDS_REGEX=makeRegex(highlight.LIGHT_GRAY_KEYWORDS);
+	// 		MAGENTA_KEYWORDS_REGEX=makeRegex(highlight.MAGENTA_KEYWORDS);
+	// 		ORANGE_KEYWORDS_REGEX=makeRegex(highlight.ORANGE_KEYWORDS);
+	// 		PINK_KEYWORDS_REGEX=makeRegex(highlight.PINK_KEYWORDS);
+	// 		RED_KEYWORDS_REGEX=makeRegex(highlight.RED_KEYWORDS);
+	// 		WHITE_KEYWORDS_REGEX=makeRegex(highlight.WHITE_KEYWORDS);
+	// 		YELLOW_KEYWORDS_REGEX=makeRegex(highlight.YELLOW_KEYWORDS);
+	// 		editordoc = editor.getStyledDocument();
+	// }
 	
 	private String makeRegex(String[] keywords){
 		if (keywords.length<2) {

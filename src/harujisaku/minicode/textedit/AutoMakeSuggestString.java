@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 
 public class AutoMakeSuggestString {
 	JTextPane textpane;
-	AbstractSuggest suggest;
+	AutoCompleteLang suggest;
 	
 	/**
 	* デフォルトコンストラクタ.
@@ -21,7 +21,7 @@ public class AutoMakeSuggestString {
 	* @param suggest 補完する文字列を定義しているクラス
 	*/
 	
-	public AutoMakeSuggestString(JTextPane textpane,AbstractSuggest suggest){
+	public AutoMakeSuggestString(JTextPane textpane,AutoCompleteLang suggest){
 		this.textpane=textpane;
 		this.suggest=suggest;
 	}
