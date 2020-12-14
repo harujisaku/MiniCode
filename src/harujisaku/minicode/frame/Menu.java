@@ -1,9 +1,9 @@
-package harujisaku.minicode;
+package harujisaku.minicode.frame;
 
 import harujisaku.minicode.pane.*;
 import harujisaku.minicode.frame.*;
+import harujisaku.minicode.textedit.*;
 import harujisaku.minicode.file.*;
-import harujisaku.minicode.highlight.*;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;

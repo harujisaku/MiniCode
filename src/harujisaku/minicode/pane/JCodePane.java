@@ -1,8 +1,6 @@
 package harujisaku.minicode.pane;
 
-import harujisaku.minicode.highlight.*;
-import harujisaku.minicode.autocomplete.*;
-import harujisaku.minicode.autocomplete.suggest.*;
+import harujisaku.minicode.textedit.*;
 import harujisaku.minicode.file.*;
 
 import java.io.File;

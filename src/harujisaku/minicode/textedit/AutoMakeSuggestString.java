@@ -1,4 +1,4 @@
-package harujisaku.minicode.autocomplete.suggest;
+package harujisaku.minicode.textedit;
 
 import javax.swing.JTextPane;
 import java.util.List;

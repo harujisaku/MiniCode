@@ -1,6 +1,6 @@
-package harujisaku.minicode.autocomplete;
+package harujisaku.minicode.textedit;
 
-import harujisaku.minicode.autocomplete.suggest.*;
+import harujisaku.minicode.textedit.*;
 
 import java.awt.Point;
 

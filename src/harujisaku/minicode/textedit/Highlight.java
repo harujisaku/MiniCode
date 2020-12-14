@@ -1,4 +1,4 @@
-package harujisaku.minicode.highlight;
+package harujisaku.minicode.textedit;
 
 import java.util.regex.*;
 
