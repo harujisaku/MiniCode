@@ -36,10 +36,11 @@ public class JCodePane extends JTextPane {
 	protected int tabLength=0;
 	private boolean wasAutoCompleteShow=false;
 	private File file = null;
+	public AutoCompletePanel autoComplete;
 	/**
 	シンタックスハイライトを保持する変数です.
 	*/
-	protected Highlight highlight = new Highlight( ReadSHSFile.readFile(new File("C:\\Users\\haruj\\Documents\\GitHub\\MiniCode\\config\\highlight\\java.shs")),this);
+	protected Highlight highlight = new Highlight( ReadSHSFile.readFile(new File("C:\\Users\\haruj\\Documents\\GitHub\\MiniCode\\config\\highlight\\text.shs")),this);
 	
 	/**
 	* デフォルトコンストラクタ.
@@ -86,7 +87,7 @@ public class JCodePane extends JTextPane {
 	
 	private void init(){
 		getDocument().putProperty(DefaultEditorKit.EndOfLineStringProperty,"\n");
-		AutoCompletePanel autoComplete = new AutoCompletePanel(this);
+		autoComplete = new AutoCompletePanel(this);
 		addKeyListener(new KeyListener(){
 			@Override
 			public void keyTyped(KeyEvent e){
@@ -100,7 +101,6 @@ public class JCodePane extends JTextPane {
 						tabLength = charCount(getText().substring(indexOfHeadOfLine(position-1),indexOfEndOfLine(position)).replace("\n",""),'\t');
 					}
 					wasAutoCompleteShow = autoComplete.wasShow();
-					System.out.println(tabLength);
 				}
 				if (Character.isWhitespace(e.getKeyChar())) {
 					final int position = getCaretPosition();
@@ -125,7 +125,6 @@ public class JCodePane extends JTextPane {
 				if (!wasAutoCompleteShow&&e.getKeyCode()==KeyEvent.VK_ENTER) {
 					final int position = getCaretPosition();
 					try {
-						System.out.println(tabLength);
 						getDocument().insertString(position,stringRepeat("\t",tabLength),null);
 					} catch(BadLocationException ex) {
 						ex.printStackTrace();

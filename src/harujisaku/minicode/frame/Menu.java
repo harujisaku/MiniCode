@@ -45,10 +45,11 @@ public class Menu extends JMenuBar{
 		JRadioButtonMenuItem tab2 = new JRadioButtonMenuItem("2");
 		JRadioButtonMenuItem tab4 = new JRadioButtonMenuItem("4");
 		JRadioButtonMenuItem tab8 = new JRadioButtonMenuItem("8");
-		JRadioButtonMenuItem javaac = new JRadioButtonMenuItem("java");
-		JRadioButtonMenuItem textac = new JRadioButtonMenuItem("text");
-		JRadioButtonMenuItem javash = new JRadioButtonMenuItem("java");
-		JRadioButtonMenuItem textsh = new JRadioButtonMenuItem("text");
+		// JRadioButtonMenuItem javaac = new JRadioButtonMenuItem("java");
+		// JRadioButtonMenuItem textac = new JRadioButtonMenuItem("text");
+		// JRadioButtonMenuItem javash = new JRadioButtonMenuItem("java");
+		// JRadioButtonMenuItem textsh = new JRadioButtonMenuItem("text");
+		LoadConfigFolder lcf = new LoadConfigFolder() ;
 		
 		file.setMnemonic(KeyEvent.VK_F);
 		edit.setMnemonic(KeyEvent.VK_E);
@@ -115,24 +116,11 @@ public class Menu extends JMenuBar{
 				m.getMainPanel().getSelectedPane().getCodePane().setTabSize(8);
 			}
 		});
-		textsh.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				// m.getMainPanel().getSelectedPane().getCodePane().setSyntaxHighLight(new TextHighlight());
-			}
-		});
-		javash.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				// CodePaneManager.selectingCodePanel.getCodePane().setSyntaxHighLight(new JavaHighlight());
-			}
-		});
+		
 		
 		
 		
 		tab4.setSelected(true);
-		textac.setSelected(true);
-		textsh.setSelected(true);
 		
 		ButtonGroup tabSizeGroup = new ButtonGroup();
 		ButtonGroup autoCompleteGroup = new ButtonGroup();
@@ -142,12 +130,18 @@ public class Menu extends JMenuBar{
 		tabSizeGroup.add(tab4);
 		tabSizeGroup.add(tab8);
 		
-		autoCompleteGroup.add(textac);
-		autoCompleteGroup.add(javaac);
+
 		
-		syntaxHighlightGroup.add(textsh);
-		syntaxHighlightGroup.add(javash);
-		
+		JRadioButtonMenuItem[] highlight = lcf.LoadHighlightFolder();
+		for (JRadioButtonMenuItem menuItem :highlight ) {
+			syntaxHighlight.add(menuItem);
+			syntaxHighlightGroup.add(menuItem);
+		}
+		JRadioButtonMenuItem[] autoCompletes = lcf.LoadAutoCompleteFolder();
+		for (JRadioButtonMenuItem menuItem :autoCompletes ) {
+			autoComplete.add(menuItem);
+			autoCompleteGroup.add(menuItem);
+		}
 		file.add(save);
 		file.add(saveAs);
 		file.add(open);
@@ -156,10 +150,6 @@ public class Menu extends JMenuBar{
 		tabSize.add(tab2);
 		tabSize.add(tab4);
 		tabSize.add(tab8);
-		autoComplete.add(textac);
-		autoComplete.add(javaac);
-		syntaxHighlight.add(textsh);
-		syntaxHighlight.add(javash);
 		view.add(tabSize);
 		edit.add(autoComplete);
 		view.add(syntaxHighlight);

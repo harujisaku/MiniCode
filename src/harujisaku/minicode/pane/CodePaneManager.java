@@ -112,7 +112,6 @@ public class CodePaneManager extends JTabbedPane{
 	
 	public void updateTabTitle(){
 		for(int i=0,len=codePanelList.size();i<len;i++){
-			System.out.println(codePanelList.get(i).getCodePane().getFileName());
 			setTitleAt(i,codePanelList.get(i).getCodePane().getFileName());
 		}
 	}

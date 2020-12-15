@@ -52,7 +52,6 @@ public class FileManager {
 		if (fileName==null) {
 			JFileChooser saveFile = new JFileChooser();
 			int selected =saveFile.showSaveDialog(null);
-			System.out.println(selected);
 			if (selected==JFileChooser.APPROVE_OPTION) {
 				fileName = saveFile.getSelectedFile();
 			}
@@ -60,7 +59,6 @@ public class FileManager {
 		if (!isCanWriteFile(fileName)) {
 		}
 		try {
-			System.out.println(text);
 			FileWriter fr = new FileWriter(fileName);
 			fr.write(text.replaceAll("\n",LINE_SEPARATOR));
 			fr.close();
@@ -91,7 +89,6 @@ public class FileManager {
 				br.close();
 				return str.toString();
 			}else{
-				System.out.println("file not found");
 				return "error";
 			}
 		} catch(FileNotFoundException e) {

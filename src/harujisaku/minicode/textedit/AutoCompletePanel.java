@@ -30,7 +30,7 @@ import javax.swing.text.BadLocationException;
 */
 
 public class AutoCompletePanel extends JPopupMenu{
-	AutoCompleteLang suggestString = ReadACSFile.readFile((new File("C:\\Users\\haruj\\Documents\\GitHub\\MiniCode\\config\\autocomplete\\java.acs")));
+	AutoCompleteLang suggestString = ReadACSFile.readFile((new File("C:\\Users\\haruj\\Documents\\GitHub\\MiniCode\\config\\autocomplete\\text.acs")));
  	private JTextPane textpane;
 	private  AutoMakeSuggestString autoMakeSuggestString;
 	private DefaultListModel model = new DefaultListModel();
@@ -109,7 +109,6 @@ public class AutoCompletePanel extends JPopupMenu{
 					SwingUtilities.invokeLater(new Runnable(){
 						@Override
 						public void run(){
-							System.out.println(textpane.getText().substring(indexOfHeadOfLine(position-50),indexOfEndOfLine(position+50)));
 							autoMakeSuggestString.makeSuggest(indexOfHeadOfLine(position-50),indexOfEndOfLine(position+50));
 						}
 					});
@@ -168,10 +167,13 @@ public class AutoCompletePanel extends JPopupMenu{
 	private boolean updateWordList(){
 		final String[] words = suggestString.search(word.toString());
 		if (words.length<1) {
+
 			return false;
 		}
 		for (final String str : words) {
-			model.addElement(str);
+			if (!str.isEmpty()) {
+				model.addElement(str);
+			}
 		}
 		return true;
 	}
@@ -179,6 +181,12 @@ public class AutoCompletePanel extends JPopupMenu{
 	private void showPanel(){
 		final int position = textpane.getCaretPosition();
 		final int returnCount = getTextRow(textpane.getText(),position);
+		if (model.getSize()==0) {
+			isShow=false;
+			wasShow=true;
+			word.delete(0,word.length());
+			return;
+		}
 		try {
 			final Point location = textpane.modelToView(position).getLocation();
 			setVisible(true);
@@ -307,5 +315,9 @@ public class AutoCompletePanel extends JPopupMenu{
 			}
 		}
 		return count;
+	}
+	
+	public void setAutoComplete(AutoCompleteLang acl){
+		suggestString = acl;
 	}
 }

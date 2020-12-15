@@ -29,7 +29,7 @@ public class AutoCompleteLang {
 	public String[] search(String text){
 		List<String> result = new LinkedList<String>();
 		for (final String str : words.toArray(new String[words.size()])) {
-			if (text.startsWith(str.substring(0,Math.min(text.length(),str.length())))) {
+			if (text.contains(str.substring(0,Math.min(text.length(),str.length())))&&text.equals(str.substring(0,Math.min(text.length(),str.length())))) {
 				result.add(str);
 			}
 		}
