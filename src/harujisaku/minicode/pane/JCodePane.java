@@ -39,7 +39,7 @@ public class JCodePane extends JTextPane {
 	/**
 	シンタックスハイライトを保持する変数です.
 	*/
-	// protected Highlight highlight = new Highlight(new TextHighlight(),this);
+	protected Highlight highlight = new Highlight( ReadSHSFile.readFile(new File("C:\\Users\\haruj\\Documents\\GitHub\\MiniCode\\config\\highlight\\java.shs")),this);
 	
 	/**
 	* デフォルトコンストラクタ.
@@ -80,9 +80,9 @@ public class JCodePane extends JTextPane {
 	* @param highlightStyle 設定するシンタックスハイライト
 	*/
 	
-	// public void setSyntaxHighLight(AbstractHighlight highlightStyle){
-	// 	highlight = new Highlight(highlightStyle,this);
-	// }
+	public void setSyntaxHighLight(HighlightLang highlightStyle){
+		highlight = new Highlight(highlightStyle,this);
+	}
 	
 	private void init(){
 		getDocument().putProperty(DefaultEditorKit.EndOfLineStringProperty,"\n");
@@ -107,7 +107,7 @@ public class JCodePane extends JTextPane {
 					SwingUtilities.invokeLater(new Runnable(){
 						@Override
 						public void run(){
-							// highlight.highlight(indexOfHeadOfLine(position-50),indexOfEndOfLine(position+50));
+							highlight.highlight(indexOfHeadOfLine(position-50),indexOfEndOfLine(position+50));
 						}
 					});
 				}else if(e.getKeyCode()==KeyEvent.VK_F1){
@@ -115,7 +115,7 @@ public class JCodePane extends JTextPane {
 					SwingUtilities.invokeLater(new Runnable(){
 						@Override
 						public void run(){
-							// highlight.highlight();
+							highlight.highlight();
 						}
 					});
 				}

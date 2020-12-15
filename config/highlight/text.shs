@@ -7,13 +7,13 @@
 <entry key="BLUE"></entry>
 <entry key="GREEN"></entry>
 <entry key="RED"></entry>
-<entry key="WHITE_SPACE_REGEX"> /\\\(\)"':,.;&lt;&gt;~\!@#$%\^&amp;*\|\+=\[\]\{\}`\?\-\t</entry>
+<entry key="WHITE_SPACE_REGEX"> /\\(\)"':,.;&lt;&gt;~\!@#$%\^&amp;*\|\+=\[\]\{\}`\?\-\t</entry>
 <entry key="PINK"></entry>
 <entry key="LIGHT_GRAY"></entry>
 <entry key="BLACK"></entry>
-<entry key="MAGENTA">abstract,assert,break,case,catch,class,const,continue,default,do,else,enum,extends,final,finally,for,goto,if,implements,import,instanceof,native,new,package,private,private,public,return,static,strictfp,switch,synchronized,throw,ththrows,transient,try,void,volatile,while,\|,\|\|,\&amp;,=,\&gt;,\&lt;,==,&gt;=,&lt;=,&amp;&amp;</entry>
+<entry key="MAGENTA"></entry>
 <entry key="YELLOW"></entry>
-<entry key="lang">java</entry>
+<entry key="lang">text</entry>
 <entry key="CYAN"></entry>
 <entry key="DARK_GRAY"></entry>
 <entry key="quotation">0,0,0</entry>
