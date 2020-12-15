@@ -161,7 +161,7 @@ public class Menu extends JMenuBar{
 		syntaxHighlight.add(textsh);
 		syntaxHighlight.add(javash);
 		view.add(tabSize);
-		view.add(autoComplete);
+		edit.add(autoComplete);
 		view.add(syntaxHighlight);
 		add(file);
 		add(edit);

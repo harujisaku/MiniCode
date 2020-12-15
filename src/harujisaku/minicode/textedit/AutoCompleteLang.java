@@ -15,7 +15,7 @@ public class AutoCompleteLang {
 	public AutoCompleteLang(String lang,String word){
 		this.lang=lang;
 		this.word=word;
-		words = new LinkedList<String>(Arrays.asList(word));
+		words = new LinkedList<String>(Arrays.asList(word.split(",",0)));
 	}
 	
 	public String getLang(){
