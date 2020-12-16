@@ -1,9 +1,7 @@
 harujisaku.minicode
-harujisaku.minicode.autocomplete
-harujisaku.minicode.autocomplete.suggest
 harujisaku.minicode.file
 harujisaku.minicode.frame
-harujisaku.minicode.highlight
 harujisaku.minicode.pane
 harujisaku.minicode.panel
 harujisaku.minicode.replace
+harujisaku.minicode.textedit
