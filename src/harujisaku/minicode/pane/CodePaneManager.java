@@ -56,7 +56,6 @@ public class CodePaneManager extends JTabbedPane{
 		if (file!=null) {		
 			codePanelList.add(new JCodePanel(4,file));
 			addTab(file.getName(),codePanelList.get(codePanelList.size()-1));
-			addButton(codePanelList.size()-1);
 		}
 	}
 	
@@ -67,7 +66,6 @@ public class CodePaneManager extends JTabbedPane{
 	public void add(){
 		codePanelList.add(new JCodePanel());
 		addTab("untitled",codePanelList.get(codePanelList.size()-1));
-		addButton(codePanelList.size()-1);
 	}
 	
 	/**
@@ -78,7 +76,6 @@ public class CodePaneManager extends JTabbedPane{
 	public void add(int l){
 		codePanelList.add(new JCodePanel(l));
 		addTab("untitled",codePanelList.get(codePanelList.size()-1));
-		addButton(codePanelList.size()-1);
 	}
 	
 	/**
@@ -91,7 +88,6 @@ public class CodePaneManager extends JTabbedPane{
 		if (file!=null) {
 			codePanelList.add(new JCodePanel(i,file));
 			addTab(file.getName(),codePanelList.get(codePanelList.size()-1));
-			addButton(codePanelList.size()-1);
 		}
 	}
 	
@@ -133,8 +129,7 @@ public class CodePaneManager extends JTabbedPane{
 			setTitleAt(i,codePanelList.get(i).getCodePane().getFileName());
 		}
 	}
-	
-	// @Override
+
 	public void addTab(String title,final JComponent content){
 		JPanel tab = new JPanel(new BorderLayout());
 		tab.setOpaque(false);
@@ -152,8 +147,5 @@ public class CodePaneManager extends JTabbedPane{
 		tab.setBorder(BorderFactory.createEmptyBorder(2,1,1,1));
 		super.addTab(null,content);
 		setTabComponentAt(getTabCount()-1,tab);
-	}
-	
-	private void addButton(int index){
 	}
 }
