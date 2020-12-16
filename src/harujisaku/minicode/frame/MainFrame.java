@@ -6,6 +6,9 @@ import harujisaku.minicode.*;
 
 import java.awt.BorderLayout;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowAdapter;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JMenuBar;
@@ -33,7 +36,7 @@ public class MainFrame extends JFrame {
 		setTitle(title);
 		setLocationRelativeTo(null);
 		setLayout(new BorderLayout());
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		getContentPane().add(mainPanel,BorderLayout.CENTER);
 		Menu menu = new Menu(this);
 		setJMenuBar(menu);
@@ -60,6 +63,17 @@ public class MainFrame extends JFrame {
 				}else{
 					setTitle("no file");
 				}
+			}
+		});
+		addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent e){
+				for(int i=0,len=codePaneManager.getCodePaneList().size();i<len;i++){
+					if(codePaneManager.removePane(0)==1){
+						return;
+					}
+				}
+				dispose();
+				System.exit(0);
 			}
 		});
 	}

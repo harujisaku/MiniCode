@@ -56,9 +56,10 @@ public class FileManager {
 				fileName = saveFile.getSelectedFile();
 			}
 		}
-		if (!isCanWriteFile(fileName)) {
-		}
 		try {
+			if (fileName==null) {
+				return fileName;
+			}
 			FileWriter fr = new FileWriter(fileName);
 			fr.write(text.replaceAll("\n",LINE_SEPARATOR));
 			fr.close();

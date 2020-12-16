@@ -18,7 +18,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JFrame;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.BorderFactory;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -95,10 +97,22 @@ public class CodePaneManager extends DraggableTabbedPane{
 	* 渡されたindexでJCodePanelを削除します
 	* @param index 削除するJCodePanelのindex
 	*/
-		
-	public void remove(int index){
+
+	public int removePane(int index){
+		if (!codePanelList.get(index).getCodePane().isSaved()) {
+			JFrame frame = new JFrame();
+			int option =JOptionPane.showConfirmDialog(frame,"保存しますか？"+codePanelList.get(index).getCodePane().getFileName());
+			if (option==JOptionPane.YES_OPTION) {
+				codePanelList.get(index).getCodePane().save();
+			}else if (option==JOptionPane.NO_OPTION) {
+				
+			}else if (option==JOptionPane.CANCEL_OPTION) {
+				return 1;
+			}
+		}
 		removeTabAt(index);
 		codePanelList.remove(index);
+		return 0;
 	}
 	
 	/**

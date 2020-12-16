@@ -37,6 +37,7 @@ public class JCodePane extends JTextPane {
 	private boolean wasAutoCompleteShow=false;
 	private File file = null;
 	public AutoCompletePanel autoComplete;
+	private final String startText;
 	/**
 	シンタックスハイライトを保持する変数です.
 	*/
@@ -50,6 +51,7 @@ public class JCodePane extends JTextPane {
 	public JCodePane(){
 		setTabSize(4);
 		init();
+		startText="";
 	}
 	
 	/**
@@ -63,6 +65,7 @@ public class JCodePane extends JTextPane {
 		setTabSize(tabSize);
 		this.file=file;
 		setText(FileManager.loadFile(file)) ;
+		startText=getText();
 		init();
 	}
 	
@@ -73,6 +76,7 @@ public class JCodePane extends JTextPane {
 	
 	public JCodePane(int tabSize){
 		setTabSize(tabSize);
+		startText="";
 		init();
 	}
 	
@@ -264,7 +268,10 @@ public class JCodePane extends JTextPane {
 	*/
 	
 	public String getFileName(){
-		return file.getName();
+		if (file!=null) {
+			return file.getName();
+		}
+		return "untitled";
 	}
 	
 	/**
@@ -274,5 +281,20 @@ public class JCodePane extends JTextPane {
 	
 	public File getFile(){
 		return file;
+	}
+	
+	public boolean isSaved(){
+		String endText=getText();
+		if (startText.isEmpty()) {
+			return false;
+		}
+		for (int i=0,len=endText.length();i<len ;i++ ) {
+			if (endText.charAt(i)!=startText.charAt(i)) {
+				System.out.println("aaaa");
+				return false;
+			}
+		}
+		System.out.println("afafhjf");
+		return true;
 	}
 }
