@@ -37,6 +37,7 @@ public class Menu extends JMenuBar{
 		JMenu tabSize = new JMenu("タブ幅");
 		JMenu autoComplete = new JMenu("自動補完");
 		JMenu syntaxHighlight = new JMenu("シンタックスハイライト");
+		JMenuItem newFile = new JMenuItem("新規");
 		JMenuItem save = new JMenuItem("保存");
 		JMenuItem saveAs = new JMenuItem("名前を付けて保存");
 		JMenuItem open = new JMenuItem("開く");
@@ -56,6 +57,17 @@ public class Menu extends JMenuBar{
 		open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O,InputEvent.CTRL_DOWN_MASK));
 		exit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,InputEvent.CTRL_DOWN_MASK));
 		findReplace.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F,InputEvent.CTRL_DOWN_MASK));
+		newFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,InputEvent.CTRL_DOWN_MASK));
+		newFile.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				if (m.codePaneManager.getSelectedIndex()!=-1) {
+					m.codePaneManager.add(4,m.codePaneManager.getSelectedIndex());
+				}else{
+					m.codePaneManager.add(4,0);
+				}
+			}
+		});
 		save.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -144,6 +156,7 @@ public class Menu extends JMenuBar{
 			autoComplete.add(menuItem);
 			autoCompleteGroup.add(menuItem);
 		}
+		file.add(newFile);
 		file.add(save);
 		file.add(saveAs);
 		file.add(open);

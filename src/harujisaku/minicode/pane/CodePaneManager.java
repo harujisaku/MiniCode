@@ -37,6 +37,7 @@ public class CodePaneManager extends DraggableTabbedPane{
 	*/
 	
 	public CodePaneManager(){
+		setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		addChangeListener(new ChangeListener(){
 			@Override
 			public void stateChanged(ChangeEvent e){
@@ -80,6 +81,11 @@ public class CodePaneManager extends DraggableTabbedPane{
 		addTab("untitled",codePanelList.get(codePanelList.size()-1));
 	}
 	
+	public void add(int i,int index){
+		System.out.println(index);
+		codePanelList.add(index,new JCodePanel(i));
+		insertTab("untitled",null,codePanelList.get(index),null,index);
+	}
 	/**
 	* 渡されたサイズとファイルでJCodePanelを追加します
 	* @param i タブのサイズ
@@ -90,6 +96,13 @@ public class CodePaneManager extends DraggableTabbedPane{
 		if (file!=null) {
 			codePanelList.add(new JCodePanel(i,file));
 			addTab(file.getName(),codePanelList.get(codePanelList.size()-1));
+		}
+	}
+	
+	public void add(int i,int index,File file){
+		if (file!=null) {
+			codePanelList.add(index,new JCodePanel(i,file));
+			insertTab(file.getName(),null,codePanelList.get(index),null,index);
 		}
 	}
 	
@@ -107,6 +120,7 @@ public class CodePaneManager extends DraggableTabbedPane{
 			}else if (option==JOptionPane.NO_OPTION) {
 				
 			}else if (option==JOptionPane.CANCEL_OPTION) {
+				System.out.println("canceled");
 				return 1;
 			}
 		}
@@ -154,7 +168,7 @@ public class CodePaneManager extends DraggableTabbedPane{
 		button.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				remove(getSelectedIndex());
+				removePane(getSelectedIndex());
 			}
 		});
 		tab.add(label,BorderLayout.WEST);
@@ -162,5 +176,29 @@ public class CodePaneManager extends DraggableTabbedPane{
 		tab.setBorder(BorderFactory.createEmptyBorder(2,1,1,1));
 		super.addTab(null,content);
 		setTabComponentAt(getTabCount()-1,tab);
+	}
+	
+	public void insertTab(String title,javax.swing.Icon icon,JComponent content,String tip,int index){
+		JPanel tab = new JPanel(new BorderLayout());
+		tab.setOpaque(false);
+		JLabel label = new JLabel(title);
+		label.setBorder(BorderFactory.createEmptyBorder(0,0,0,4));
+		JButton button = new JButton("x");
+		button.setMargin(new Insets(0,0,0,0));
+		button.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				removePane(getSelectedIndex());
+			}
+		});
+		tab.add(label,BorderLayout.WEST);
+		tab.add(button,BorderLayout.EAST);
+		tab.setBorder(BorderFactory.createEmptyBorder(2,1,1,1));
+		try {
+			super.insertTab(null,null,content,null,index);
+		} catch(Exception e) {
+			super.addTab(null,content);
+		}
+		setTabComponentAt(index,tab);
 	}
 }

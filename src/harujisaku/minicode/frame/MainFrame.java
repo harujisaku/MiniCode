@@ -67,6 +67,7 @@ public class MainFrame extends JFrame {
 		});
 		addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
+				System.out.println(codePaneManager.getCodePaneList().size());
 				for(int i=0,len=codePaneManager.getCodePaneList().size();i<len;i++){
 					if(codePaneManager.removePane(0)==1){
 						return;

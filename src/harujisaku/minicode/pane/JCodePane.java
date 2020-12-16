@@ -286,15 +286,13 @@ public class JCodePane extends JTextPane {
 	public boolean isSaved(){
 		String endText=getText();
 		if (startText.isEmpty()) {
-			return false;
+			return true;
 		}
 		for (int i=0,len=endText.length();i<len ;i++ ) {
 			if (endText.charAt(i)!=startText.charAt(i)) {
-				System.out.println("aaaa");
 				return false;
 			}
 		}
-		System.out.println("afafhjf");
 		return true;
 	}
 }
