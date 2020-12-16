@@ -53,7 +53,24 @@ public class ReplaceFrame extends JFrame{
 				finds=find();
 			}
 		});
+		findText.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				finds=find();
+			}
+		});
 		replace.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				try {
+					textComponent.getDocument().remove(finds.getStart(),finds.length());
+					textComponent.getDocument().insertString(finds.getStart(),replaceText.getText(),null);
+				} catch(BadLocationException ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
+		replaceText.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
 				try {
