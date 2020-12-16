@@ -45,10 +45,6 @@ public class Menu extends JMenuBar{
 		JRadioButtonMenuItem tab2 = new JRadioButtonMenuItem("2");
 		JRadioButtonMenuItem tab4 = new JRadioButtonMenuItem("4");
 		JRadioButtonMenuItem tab8 = new JRadioButtonMenuItem("8");
-		// JRadioButtonMenuItem javaac = new JRadioButtonMenuItem("java");
-		// JRadioButtonMenuItem textac = new JRadioButtonMenuItem("text");
-		// JRadioButtonMenuItem javash = new JRadioButtonMenuItem("java");
-		// JRadioButtonMenuItem textsh = new JRadioButtonMenuItem("text");
 		LoadConfigFolder lcf = new LoadConfigFolder() ;
 		
 		file.setMnemonic(KeyEvent.VK_F);
