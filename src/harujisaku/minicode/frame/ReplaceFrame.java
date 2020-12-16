@@ -50,34 +50,42 @@ public class ReplaceFrame extends JFrame{
 		find.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				finds=find();
+				if (CodePaneManager.selectingCodePanel!=null) {
+					finds=find();
+				}
 			}
 		});
 		findText.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				finds=find();
+				if (CodePaneManager.selectingCodePanel!=null) {
+					finds=find();
+				}
 			}
 		});
 		replace.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				try {
-					textComponent.getDocument().remove(finds.getStart(),finds.length());
-					textComponent.getDocument().insertString(finds.getStart(),replaceText.getText(),null);
-				} catch(BadLocationException ex) {
-					ex.printStackTrace();
+				if (CodePaneManager.selectingCodePanel!=null) {
+					try {
+						textComponent.getDocument().remove(finds.getStart(),finds.length());
+						textComponent.getDocument().insertString(finds.getStart(),replaceText.getText(),null);
+					} catch(BadLocationException ex) {
+						ex.printStackTrace();
+					}
 				}
 			}
 		});
 		replaceText.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				try {
-					textComponent.getDocument().remove(finds.getStart(),finds.length());
-					textComponent.getDocument().insertString(finds.getStart(),replaceText.getText(),null);
-				} catch(BadLocationException ex) {
-					ex.printStackTrace();
+				if (CodePaneManager.selectingCodePanel!=null) {
+					try {
+						textComponent.getDocument().remove(finds.getStart(),finds.length());
+						textComponent.getDocument().insertString(finds.getStart(),replaceText.getText(),null);
+					} catch(BadLocationException ex) {
+						ex.printStackTrace();
+					}
 				}
 			}
 		});

@@ -38,7 +38,9 @@ public class LoadConfigFolder implements FilenameFilter{
 			menuItem.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){
-					CodePaneManager.selectingCodePanel.getCodePane().autoComplete.setAutoComplete(ReadACSFile.readFile(file));
+					if (CodePaneManager.selectingCodePanel!=null) {
+						CodePaneManager.selectingCodePanel.getCodePane().autoComplete.setAutoComplete(ReadACSFile.readFile(file));
+					}
 				}
 			});
 			radioButtonMenuItem.add(menuItem);
@@ -58,7 +60,9 @@ public class LoadConfigFolder implements FilenameFilter{
 			menuItem.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){
-					CodePaneManager.selectingCodePanel.getCodePane().setSyntaxHighLight(ReadSHSFile.readFile(file));
+					if (CodePaneManager.selectingCodePanel!=null) {
+						CodePaneManager.selectingCodePanel.getCodePane().setSyntaxHighLight(ReadSHSFile.readFile(file));
+					}
 				}
 			});
 			radioButtonMenuItem.add(menuItem);

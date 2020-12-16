@@ -59,14 +59,18 @@ public class Menu extends JMenuBar{
 		save.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.getMainPanel().getSelectedPane().getCodePane().save();
+				if (CodePaneManager.selectingCodePanel!=null) {
+					CodePaneManager.selectingCodePanel.getCodePane().save();
+				}
 				m.getCodePaneManager().updateTabTitle();
 			}
 		});
 		saveAs.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.getMainPanel().getSelectedPane().getCodePane().saveAs();
+				if (CodePaneManager.selectingCodePanel!=null) {
+					CodePaneManager.selectingCodePanel.getCodePane().saveAs();
+				}
 				m.getCodePaneManager().updateTabTitle();
 			}
 		});
@@ -97,25 +101,28 @@ public class Menu extends JMenuBar{
 		tab2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.getMainPanel().getSelectedPane().getCodePane().setTabSize(2);
+				if (CodePaneManager.selectingCodePanel!=null) {
+					CodePaneManager.selectingCodePanel.getCodePane().setTabSize(2);
+				}
 			}
 		});
 		tab4.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.getMainPanel().getSelectedPane().getCodePane().setTabSize(4);
+				if (CodePaneManager.selectingCodePanel!=null) {
+					CodePaneManager.selectingCodePanel.getCodePane().setTabSize(4);
+				}
 			}
 		});
 		tab8.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				m.getMainPanel().getSelectedPane().getCodePane().setTabSize(8);
+				if (CodePaneManager.selectingCodePanel!=null) {
+					CodePaneManager.selectingCodePanel.getCodePane().setTabSize(8);
+				}
 			}
 		});
-		
-		
-		
-		
+
 		tab4.setSelected(true);
 		
 		ButtonGroup tabSizeGroup = new ButtonGroup();
@@ -125,8 +132,7 @@ public class Menu extends JMenuBar{
 		tabSizeGroup.add(tab2);
 		tabSizeGroup.add(tab4);
 		tabSizeGroup.add(tab8);
-		
-
+	
 		
 		JRadioButtonMenuItem[] highlight = lcf.LoadHighlightFolder();
 		for (JRadioButtonMenuItem menuItem :highlight ) {
