@@ -319,5 +319,6 @@ public class AutoCompletePanel extends JPopupMenu{
 	
 	public void setAutoComplete(AutoCompleteLang acl){
 		suggestString = acl;
+		autoMakeSuggestString  = new AutoMakeSuggestString(textpane,suggestString);
 	}
 }
