@@ -55,7 +55,11 @@ public class MainFrame extends JFrame {
 		codePaneManager.addChangeListener(new ChangeListener(){
 			@Override
 			public void stateChanged(ChangeEvent e){
-				setTitle(codePaneManager.getTitleAt(codePaneManager.getSelectedIndex()));
+				if (codePaneManager.getSelectedIndex()>=0) {
+					setTitle(codePaneManager.getTitleAt(codePaneManager.getSelectedIndex()));
+				}else{
+					setTitle("no file");
+				}
 			}
 		});
 	}
