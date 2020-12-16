@@ -27,7 +27,7 @@ import javax.swing.event.ChangeListener;
 * たくさんのJCodePaneをListで管理するクラスです.
 */
 
-public class CodePaneManager extends JTabbedPane{
+public class CodePaneManager extends DraggableTabbedPane{
 	List<JCodePanel> codePanelList = new ArrayList<JCodePanel>();
 	public static JCodePanel selectingCodePanel = null;
 	/**
