@@ -136,6 +136,7 @@ public class CodePaneManager extends DraggableTabbedPane{
 		JLabel label = new JLabel(title);
 		label.setBorder(BorderFactory.createEmptyBorder(0,0,0,4));
 		JButton button = new JButton("x");
+		button.setMargin(new Insets(0,0,0,0));
 		button.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
