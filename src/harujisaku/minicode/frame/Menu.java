@@ -5,16 +5,19 @@ import harujisaku.minicode.frame.*;
 import harujisaku.minicode.textedit.*;
 import harujisaku.minicode.file.*;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.ButtonGroup;
 import javax.swing.KeyStroke;
-import java.awt.event.KeyEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.UIManager;
+import javax.swing.SwingUtilities;
 
 /**
 * メニューバーを管理するクラスです.
@@ -37,6 +40,7 @@ public class Menu extends JMenuBar{
 		JMenu tabSize = new JMenu("タブ幅");
 		JMenu autoComplete = new JMenu("自動補完");
 		JMenu syntaxHighlight = new JMenu("シンタックスハイライト");
+		JMenu lookAndFeel = new JMenu("LookAndFeel");
 		JMenuItem newFile = new JMenuItem("新規");
 		JMenuItem save = new JMenuItem("保存");
 		JMenuItem saveAs = new JMenuItem("名前を付けて保存");
@@ -140,6 +144,7 @@ public class Menu extends JMenuBar{
 		ButtonGroup tabSizeGroup = new ButtonGroup();
 		ButtonGroup autoCompleteGroup = new ButtonGroup();
 		ButtonGroup syntaxHighlightGroup = new ButtonGroup();
+		ButtonGroup lookAndFeelGroup = new ButtonGroup();
 		
 		tabSizeGroup.add(tab2);
 		tabSizeGroup.add(tab4);
@@ -156,6 +161,22 @@ public class Menu extends JMenuBar{
 			autoComplete.add(menuItem);
 			autoCompleteGroup.add(menuItem);
 		}
+		UIManager.LookAndFeelInfo infos[] = UIManager.getInstalledLookAndFeels();
+		for ( UIManager.LookAndFeelInfo info :infos ) {
+			JRadioButtonMenuItem lookAndFeelMenu = new JRadioButtonMenuItem(info.getName());
+			lookAndFeel.add(lookAndFeelMenu);
+			lookAndFeelGroup.add(lookAndFeelMenu);
+			lookAndFeelMenu.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					try {
+						UIManager.setLookAndFeel(info.getClassName());
+						SwingUtilities.updateComponentTreeUI(m);
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+			});
+		}
 		file.add(newFile);
 		file.add(save);
 		file.add(saveAs);
@@ -168,6 +189,7 @@ public class Menu extends JMenuBar{
 		view.add(tabSize);
 		edit.add(autoComplete);
 		view.add(syntaxHighlight);
+		view.add(lookAndFeel);
 		add(file);
 		add(edit);
 		add(view);

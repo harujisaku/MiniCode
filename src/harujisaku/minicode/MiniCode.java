@@ -37,9 +37,10 @@ public class MiniCode{
 	* 繰り返す文字
 	*/
 	public static String REPEAT_LETTER_REGEX = "[\\[\\]\\(\\)\\{\\}\"'`]";
-	MainFrame mainFrame = new MainFrame(this);
 	ReplaceFrame replaceFrame = new ReplaceFrame();
+	MainFrame mainFrame;
 	MiniCode(){
+		mainFrame = new MainFrame(this);
 	}
 
 	/**
