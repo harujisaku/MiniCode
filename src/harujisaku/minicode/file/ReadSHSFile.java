@@ -61,6 +61,6 @@ public class ReadSHSFile {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-		return new HighlightLang(lang).setWhitespace(WHITE_SPACE_REGEX).setDefault(DEFAULT_KEYWORDS).setBlack(BLACK_KEYWORDS).setBlue(BLUE_KEYWORDS).setCyan(CYAN_KEYWORDS).setDarkGray(DARK_GRAY_KEYWORDS).setGray(GRAY_KEYWORDS).setLightGray(LIGHT_GRAY_KEYWORDS).setMagenta(MAGENTA_KEYWORDS).setOrange(ORANGE_KEYWORDS).setPink(PINK_KEYWORDS).setRed(RED_KEYWORDS).setWhite(WHITE_KEYWORDS).setYellow(YELLOW_KEYWORDS);
+		return new HighlightLang(lang).setWhitespace(WHITE_SPACE_REGEX).setDefault(DEFAULT_KEYWORDS).setBlack(BLACK_KEYWORDS).setBlue(BLUE_KEYWORDS).setCyan(CYAN_KEYWORDS).setDarkGray(DARK_GRAY_KEYWORDS).setGray(GRAY_KEYWORDS).setLightGray(LIGHT_GRAY_KEYWORDS).setMagenta(MAGENTA_KEYWORDS).setOrange(ORANGE_KEYWORDS).setPink(PINK_KEYWORDS).setRed(RED_KEYWORDS).setWhite(WHITE_KEYWORDS).setYellow(YELLOW_KEYWORDS).setQuotation(quotation);
 	}
 }

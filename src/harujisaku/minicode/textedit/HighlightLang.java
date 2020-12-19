@@ -12,6 +12,7 @@ public class HighlightLang {
 	}
 	
 	public HighlightLang setWhitespace(String str ){
+		System.out.println(str);
 		WHITE_SPACE_REGEX=str;
 		return this;
 	}

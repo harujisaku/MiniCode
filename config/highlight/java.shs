@@ -7,7 +7,7 @@
 <entry key="BLUE"></entry>
 <entry key="GREEN"></entry>
 <entry key="RED"></entry>
-<entry key="WHITE_SPACE_REGEX"> \\/\(\)"':,.;&lt;&gt;~\!@#$%\^&amp;*\|\+=\[\]\{\}`\?\-\t</entry>
+<entry key="WHITE_SPACE_REGEX">[ \\/\(\)"':,.;&lt;&gt;~\!@#$%\^&amp;*\|\+=\[\]\{\}`\?\-\t]</entry>
 <entry key="PINK"></entry>
 <entry key="LIGHT_GRAY"></entry>
 <entry key="BLACK"></entry>

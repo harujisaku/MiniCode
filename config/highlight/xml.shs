@@ -2,21 +2,21 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>Test</comment>
-<entry key="GRAY"></entry>
+<entry key ="GRAY"></entry>
 <entry key="WHITE"></entry>
 <entry key="BLUE"></entry>
 <entry key="GREEN"></entry>
-<entry key="RED"></entry>
+<entry key="RED">&lt;\w+|/\w+&gt;</entry>
 <entry key="WHITE_SPACE_REGEX">[ /\\\(\)"':,.;&lt;&gt;~\!@#$%\^&amp;*\|\+=\[\]\{\}`\?\-\t]</entry>
 <entry key="PINK"></entry>
 <entry key="LIGHT_GRAY"></entry>
 <entry key="BLACK"></entry>
 <entry key="MAGENTA"></entry>
 <entry key="YELLOW"></entry>
-<entry key="lang">text</entry>
+<entry key="lang">xml</entry>
 <entry key="CYAN"></entry>
 <entry key="DARK_GRAY"></entry>
-<entry key="quotation">0,0,0</entry>
+<entry key="quotation">0,255,0</entry>
 <entry key="DEFAULT"></entry>
-<entry key="ORANGE"></entry>
+<entry key="ORANGE"> \w+?=</entry>
 </properties>

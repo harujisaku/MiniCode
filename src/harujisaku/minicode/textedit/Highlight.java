@@ -114,6 +114,7 @@ public class Highlight{
 		if (regex.isEmpty()) {
 			return;
 		}
+		System.out.println(regex);
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(editor.getText().substring(start,end));
 		while(m.find()){
@@ -124,11 +125,11 @@ public class Highlight{
 	}
 	
 	private void quotation(Color c){
-		highlight("\".*\"",c);
+		highlight("\".*?\"",c);
 	}
 	
 	private void quotation(int start,int end,Color c){
-		highlight(start,end,"\".*\"",c);
+		highlight(start,end,"\".*?\"",c);
 	}
 	
 	/**
