@@ -1,5 +1,7 @@
 package harujisaku.minicode.textedit;
 
+import harujisaku.minicode.theme.ThemeColor;
+
 import java.util.regex.*;
 
 import java.awt.Color;
@@ -89,21 +91,21 @@ public class Highlight{
 	
 	public void highlight(int start ,int end){
 		clearTextColors(start,end);
-		highlight(start,end,BLACK_KEYWORDS_REGEX,Color.BLACK);
-		highlight(start,end,BLUE_KEYWORDS_REGEX,Color.BLUE);
-		highlight(start,end,CYAN_KEYWORDS_REGEX,Color.CYAN);
-		highlight(start,end,DARK_GRAY_KEYWORDS_REGEX,Color.DARK_GRAY);
-		highlight(start,end,GRAY_KEYWORDS_REGEX,Color.GRAY);
-		highlight(start,end,GREEN_KEYWORDS_REGEX,Color.GREEN);
-		highlight(start,end,LIGHT_GRAY_KEYWORDS_REGEX,Color.LIGHT_GRAY);
-		highlight(start,end,MAGENTA_KEYWORDS_REGEX,Color.MAGENTA);
-		highlight(start,end,ORANGE_KEYWORDS_REGEX,Color.ORANGE);
-		highlight(start,end,PINK_KEYWORDS_REGEX,Color.PINK);
-		highlight(start,end,RED_KEYWORDS_REGEX,Color.RED);
-		highlight(start,end,WHITE_KEYWORDS_REGEX,Color.WHITE);
-		highlight(start,end,YELLOW_KEYWORDS_REGEX,Color.YELLOW);
+		highlight(start,end,BLACK_KEYWORDS_REGEX,ThemeColor.BLACK);
+		highlight(start,end,BLUE_KEYWORDS_REGEX,ThemeColor.BLUE);
+		highlight(start,end,CYAN_KEYWORDS_REGEX,ThemeColor.CYAN);
+		highlight(start,end,DARK_GRAY_KEYWORDS_REGEX,ThemeColor.DARK_GRAY);
+		highlight(start,end,GRAY_KEYWORDS_REGEX,ThemeColor.GRAY);
+		highlight(start,end,GREEN_KEYWORDS_REGEX,ThemeColor.GREEN);
+		highlight(start,end,LIGHT_GRAY_KEYWORDS_REGEX,ThemeColor.LIGHT_GRAY);
+		highlight(start,end,MAGENTA_KEYWORDS_REGEX,ThemeColor.MAGENTA);
+		highlight(start,end,ORANGE_KEYWORDS_REGEX,ThemeColor.ORANGE);
+		highlight(start,end,PINK_KEYWORDS_REGEX,ThemeColor.PINK);
+		highlight(start,end,RED_KEYWORDS_REGEX,ThemeColor.RED);
+		highlight(start,end,WHITE_KEYWORDS_REGEX,ThemeColor.WHITE);
+		highlight(start,end,YELLOW_KEYWORDS_REGEX,ThemeColor.YELLOW);
 		quotation(start,end,highlight.quotation());
-		highlight(start,end,highlight.WHITE_SPACE_REGEX,Color.BLACK);
+		highlight(start,end,highlight.WHITE_SPACE_REGEX,ThemeColor.BLACK);
 	}
 	
 	private  void highlight(String regex,Color c){
@@ -138,7 +140,7 @@ public class Highlight{
 	public void clearTextColors(){
 		StyleContext sc = StyleContext.getDefaultStyleContext();
 		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,
-		StyleConstants.Foreground, Color.BLACK);
+		StyleConstants.Foreground, ThemeColor.BLACK);
 		editordoc.setCharacterAttributes(0,editor.getText().length(), aset, true);
 	}
 	
@@ -151,7 +153,7 @@ public class Highlight{
 	public void clearTextColors(int start,int end){
 		StyleContext sc = StyleContext.getDefaultStyleContext();
 		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,
-		StyleConstants.Foreground, Color.BLACK);
+		StyleConstants.Foreground, ThemeColor.BLACK);
 		editordoc.setCharacterAttributes(start,end-start, aset, true);
 	}
 }

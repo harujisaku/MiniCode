@@ -1,12 +1,14 @@
 package harujisaku.minicode.textedit;
 
+import harujisaku.minicode.theme.ThemeColor;
+
 import java.awt.Color;
 
 public class HighlightLang {
 	public String lang ="text",WHITE_SPACE_REGEX="";
 	public String[] DEFAULT_KEYWORDS={""},BLACK_KEYWORDS={""},BLUE_KEYWORDS={""},CYAN_KEYWORDS={""},DARK_GRAY_KEYWORDS={""},GRAY_KEYWORDS={""};
 	public String[] GREEN_KEYWORDS={""},MAGENTA_KEYWORDS={""},ORANGE_KEYWORDS={""},PINK_KEYWORDS={""},RED_KEYWORDS={""},WHITE_KEYWORDS={""},YELLOW_KEYWORDS={""},LIGHT_GRAY_KEYWORDS={""};
-	private  Color quotation= Color.BLACK;
+	private  Color quotation= ThemeColor.BLACK;
 	public HighlightLang(String lang){
 		this.lang=lang;
 	}
@@ -86,31 +88,31 @@ public class HighlightLang {
 		String[] str = word.split(",");
 		if (str.length==1) {
 			if (word.equals("BLACK")) {
-				quotation=Color.BLACK;
+				quotation=ThemeColor.BLACK;
 			}else if (word.equals("BLUE")) {
-				quotation=Color.BLUE;
+				quotation=ThemeColor.BLUE;
 			}else if(word.equals("CYAN")){
-				quotation=Color.CYAN;
+				quotation=ThemeColor.CYAN;
 			}else if(word.equals("DARK_GRAY")){
-				quotation=Color.DARK_GRAY;
+				quotation=ThemeColor.DARK_GRAY;
 			}else if(word.equals("GRAY")){
-				quotation=Color.GRAY;
+				quotation=ThemeColor.GRAY;
 			}else if(word.equals("GREEN")){
-				quotation=Color.GREEN;
+				quotation=ThemeColor.GREEN;
 			}else if(word.equals("LIGHT_GRAY")){
-				quotation=Color.LIGHT_GRAY;
+				quotation=ThemeColor.LIGHT_GRAY;
 			}else if(word.equals("MAGENTA")){
-				quotation=Color.MAGENTA;
+				quotation=ThemeColor.MAGENTA;
 			}else if(word.equals("ORANGE")){
-				quotation=Color.ORANGE;
+				quotation=ThemeColor.ORANGE;
 			}else if(word.equals("PINK")){
-				quotation=Color.PINK;
+				quotation=ThemeColor.PINK;
 			}else if(word.equals("RED")){
-				quotation=Color.RED;
+				quotation=ThemeColor.RED;
 			}else if(word.equals("WHITE")){
-				quotation=Color.WHITE;
+				quotation=ThemeColor.WHITE;
 			}else if(word.equals("YELLOW")){
-				quotation=Color.YELLOW;
+				quotation=ThemeColor.YELLOW;
 			}
 			return this;
 		}

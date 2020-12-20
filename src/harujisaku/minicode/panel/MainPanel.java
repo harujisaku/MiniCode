@@ -10,10 +10,12 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
-import java.awt.BorderLayout;
 
 public class MainPanel extends JPanel {
 	CodePaneManager codePanelList;
