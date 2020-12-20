@@ -20,72 +20,72 @@ public class HighlightLang {
 	}
 	
 	public HighlightLang setDefault(String  word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		DEFAULT_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setBlack(String  word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		BLACK_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setBlue(String word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		BLUE_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setCyan(String  word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		CYAN_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setDarkGray(String  word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		DARK_GRAY_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setGray(String  word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		GRAY_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setLightGray(String word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		LIGHT_GRAY_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setMagenta(String  word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		MAGENTA_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setOrange(String word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		ORANGE_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setPink(String  word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		PINK_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setRed(String word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		RED_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setWhite(String word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		WHITE_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setYellow(String  word ){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		YELLOW_KEYWORDS=str;
 		return this;
 	}
 	public HighlightLang setQuotation(String word){
-		String[] str = word.split(",");
+		String[] str = word.split("[a-zA-Z],");
 		if (str.length==1) {
 			if (word.equals("BLACK")) {
 				quotation=ThemeColor.BLACK;

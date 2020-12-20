@@ -41,6 +41,7 @@ public class Menu extends JMenuBar{
 		JMenu autoComplete = new JMenu("自動補完");
 		JMenu syntaxHighlight = new JMenu("シンタックスハイライト");
 		JMenu lookAndFeel = new JMenu("LookAndFeel");
+		JMenu theme = new JMenu("テーマ");
 		JMenuItem newFile = new JMenuItem("新規");
 		JMenuItem save = new JMenuItem("保存");
 		JMenuItem saveAs = new JMenuItem("名前を付けて保存");
@@ -145,6 +146,7 @@ public class Menu extends JMenuBar{
 		ButtonGroup autoCompleteGroup = new ButtonGroup();
 		ButtonGroup syntaxHighlightGroup = new ButtonGroup();
 		ButtonGroup lookAndFeelGroup = new ButtonGroup();
+		ButtonGroup themeGroup = new ButtonGroup();
 		
 		tabSizeGroup.add(tab2);
 		tabSizeGroup.add(tab4);
@@ -160,6 +162,11 @@ public class Menu extends JMenuBar{
 		for (JRadioButtonMenuItem menuItem :autoCompletes ) {
 			autoComplete.add(menuItem);
 			autoCompleteGroup.add(menuItem);
+		}
+		JRadioButtonMenuItem[] themes = lcf.LoadThemeFolder();
+		for (JRadioButtonMenuItem menuItem :themes ) {
+			theme.add(menuItem);
+			themeGroup.add(menuItem);
 		}
 		UIManager.LookAndFeelInfo infos[] = UIManager.getInstalledLookAndFeels();
 		for ( UIManager.LookAndFeelInfo info :infos ) {
@@ -188,6 +195,7 @@ public class Menu extends JMenuBar{
 		tabSize.add(tab8);
 		view.add(tabSize);
 		edit.add(autoComplete);
+		view.add(theme);
 		view.add(syntaxHighlight);
 		view.add(lookAndFeel);
 		add(file);
