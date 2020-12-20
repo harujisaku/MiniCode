@@ -11,7 +11,7 @@
 <entry key="PINK"></entry>
 <entry key="LIGHT_GRAY"></entry>
 <entry key="BLACK"></entry>
-<entry key="MAGENTA">abstract,assert,break,case,catch,class,const,continue,default,do,else,enum,extends,final,finally,for,goto,if,implements,import,instanceof,native,new,package,private,private,public,return,static,strictfp,switch,synchronized,throw,ththrows,transient,try,void,volatile,while,\|,\|\|,\&amp;,=,\&gt;,\&lt;,==,&gt;=,&lt;=,&amp;&amp;</entry>
+<entry key="MAGENTA">abstract,assert,break,case,catch,class,const,continue,default,do,else,enum,extends,final,finally,for,goto,if,implements,import,instanceof,native,new,package,private,private,public,return,static,strictfp,switch,synchronized,throw,ththrows,transient,try,void,volatile,while</entry>
 <entry key="YELLOW">[ \\/\(\)"':,.;&lt;&gt;~\!@#$%\^&amp;*\|\+=\[\]\{\}`\?\-\t]([A-Z]{1,2}[a-z][a-zA-Z0-9]+|int|char|boolean|void|Override|override)(?=[ \\/\(\)"':,.;&lt;&gt;~\!@#$%\^&amp;*\|\+=\[\]\{\}`\?\-\t])(?!\()</entry>
 <entry key="lang">java</entry>
 <entry key="CYAN">[ \\/\(\)"':,.;&lt;&gt;~\!@#$%\^&amp;*\|\+=\[\]\{\}`\?\-\t]+[a-z]+[a-zA-Z0-9]+\(</entry>

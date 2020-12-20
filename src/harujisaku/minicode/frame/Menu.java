@@ -185,9 +185,10 @@ public class Menu extends JMenuBar{
 			});
 		}
 		file.add(newFile);
+		file.add(open);
 		file.add(save);
 		file.add(saveAs);
-		file.add(open);
+		file.addSeparator();
 		file.add(exit);
 		edit.add(findReplace);
 		tabSize.add(tab2);
