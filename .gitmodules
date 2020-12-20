@@ -1,0 +1,3 @@
+[submodule "lib/JCodePane"]
+	path = lib/JCodePane
+	url = https://github.com/harujisaku/JCodePane.git
