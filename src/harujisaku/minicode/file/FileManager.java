@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
@@ -60,7 +62,7 @@ public class FileManager {
 			if (fileName==null) {
 				return fileName;
 			}
-			FileWriter fr = new FileWriter(fileName);
+			PrintWriter fr = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName),"UTF-8")));
 			fr.write(text.replaceAll("\n",LINE_SEPARATOR));
 			fr.close();
 		} catch(Exception e) {

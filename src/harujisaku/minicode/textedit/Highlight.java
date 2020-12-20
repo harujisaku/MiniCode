@@ -114,7 +114,6 @@ public class Highlight{
 		if (regex.isEmpty()) {
 			return;
 		}
-		System.out.println(regex);
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(editor.getText().substring(start,end));
 		while(m.find()){
