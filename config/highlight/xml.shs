@@ -16,7 +16,7 @@
 <entry key="lang">xml</entry>
 <entry key="CYAN"></entry>
 <entry key="DARK_GRAY"></entry>
-<entry key="quotation">0,255,0</entry>
+<entry key="quotation">GREEN</entry>
 <entry key="DEFAULT"></entry>
 <entry key="ORANGE"> \w+?=</entry>
 </properties>

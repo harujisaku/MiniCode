@@ -6,7 +6,7 @@ public class HighlightLang {
 	public String lang ="text",WHITE_SPACE_REGEX="";
 	public String[] DEFAULT_KEYWORDS={""},BLACK_KEYWORDS={""},BLUE_KEYWORDS={""},CYAN_KEYWORDS={""},DARK_GRAY_KEYWORDS={""},GRAY_KEYWORDS={""};
 	public String[] GREEN_KEYWORDS={""},MAGENTA_KEYWORDS={""},ORANGE_KEYWORDS={""},PINK_KEYWORDS={""},RED_KEYWORDS={""},WHITE_KEYWORDS={""},YELLOW_KEYWORDS={""},LIGHT_GRAY_KEYWORDS={""};
-	private  int quotationR=0,quotationG=0,quotationB=0;
+	private  Color quotation= Color.BLACK;
 	public HighlightLang(String lang){
 		this.lang=lang;
 	}
@@ -84,12 +84,40 @@ public class HighlightLang {
 	}
 	public HighlightLang setQuotation(String word){
 		String[] str = word.split(",");
-		quotationR=Integer.parseInt(str[0]);
-		quotationG=Integer.parseInt(str[1]);
-		quotationB=Integer.parseInt(str[2]);
+		if (str.length==1) {
+			if (word.equals("BLACK")) {
+				quotation=Color.BLACK;
+			}else if (word.equals("BLUE")) {
+				quotation=Color.BLUE;
+			}else if(word.equals("CYAN")){
+				quotation=Color.CYAN;
+			}else if(word.equals("DARK_GRAY")){
+				quotation=Color.DARK_GRAY;
+			}else if(word.equals("GRAY")){
+				quotation=Color.GRAY;
+			}else if(word.equals("GREEN")){
+				quotation=Color.GREEN;
+			}else if(word.equals("LIGHT_GRAY")){
+				quotation=Color.LIGHT_GRAY;
+			}else if(word.equals("MAGENTA")){
+				quotation=Color.MAGENTA;
+			}else if(word.equals("ORANGE")){
+				quotation=Color.ORANGE;
+			}else if(word.equals("PINK")){
+				quotation=Color.PINK;
+			}else if(word.equals("RED")){
+				quotation=Color.RED;
+			}else if(word.equals("WHITE")){
+				quotation=Color.WHITE;
+			}else if(word.equals("YELLOW")){
+				quotation=Color.YELLOW;
+			}
+			return this;
+		}
+		quotation=new Color(Integer.parseInt(str[0]),Integer.parseInt(str[1]),Integer.parseInt(str[2]));
 		return this;
 	}
 	public Color quotation(){
-		return new Color(quotationR,quotationG,quotationB);
+		return quotation;
 	}
 }

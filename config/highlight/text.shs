@@ -16,7 +16,7 @@
 <entry key="lang">text</entry>
 <entry key="CYAN"></entry>
 <entry key="DARK_GRAY"></entry>
-<entry key="quotation">0,0,0</entry>
+<entry key="quotation">BLACK</entry>
 <entry key="DEFAULT"></entry>
 <entry key="ORANGE"></entry>
 </properties>
